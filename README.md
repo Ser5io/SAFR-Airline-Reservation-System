@@ -4,7 +4,7 @@ This project proposes the development of an Airline Reservation System (SOSKI), 
 
 ## Project Proposal
 
-You can find the proposal for this project [here]().
+You can find the proposal for this project [here](https://github.com/Ser5io/-SOSKI-Airline-Reservation-System-/blob/main/Project%20Proposal.pdf).
 
 ## Features
 
