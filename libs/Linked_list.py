@@ -11,15 +11,19 @@ class Linked_list:
     def isEmpty(self):
         pass
     
+    # Adds a new node at the beginning of the list.
     def add(self, data):
         newNode = Node(data)
         
         if self.isEmpty():
             self.head = newNode
+            self.tail = newNode
         else:
             self.head.prev = newNode
             newNode.next = self.head
             self.head = newNode
+            
+        counter += 1
     
     def append(self, data):
         pass
@@ -33,6 +37,7 @@ class Linked_list:
     def traverse(self):
         pass
     
+    # Removes the head node and decrements the counter.
     def removeHead(self):
         if self.isEmpty():
             return
@@ -40,6 +45,7 @@ class Linked_list:
         temp = self.head
         self.head = self.head.next
         temp = None
+        counter -= 1
     
     def removeTail(self):
         pass
