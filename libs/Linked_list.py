@@ -44,7 +44,7 @@ class Linked_list:
         
         temp = self.head
         self.head = self.head.next
-        temp = None
+        temp = temp.prev = temp.next = None
         counter -= 1
     
     def removeTail(self):
