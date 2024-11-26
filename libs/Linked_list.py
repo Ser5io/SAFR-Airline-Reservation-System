@@ -9,8 +9,7 @@ class Linked_list:
         counter = 0
     
     def isEmpty(self):
-        pass
-    
+        return self.counter == 0
     # Adds a new node at the beginning of the list.
     def add(self, data):
         newNode = Node(data)
