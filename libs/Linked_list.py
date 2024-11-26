@@ -7,7 +7,7 @@ class Linked_list:
         self.head = self.tail = None
         counter = 0
     def isEmpty(self):
-        pass
+        return self.counter == 0
     def add(self, data):
         pass
     def append(self, data):
