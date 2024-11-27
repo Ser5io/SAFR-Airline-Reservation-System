@@ -11,7 +11,20 @@ class Linked_list:
     def add(self, data):
         pass
     def append(self, data):
-        pass
+        def append(self, data):
+        #////This is the new node////
+         new_node = Node(data)
+        
+        # ////If the list is empty, set head and tail to the new node////
+        if self.head is None:
+            self.head = self.tail = new_node
+        else:
+            #////Link the new node to the current tail////
+            self.tail.next = new_node
+            new_node.prev = self.tail
+            #////Update the tail to the new node////
+            self.tail = new_node
+        self.counter += 1  #////Increment the counter////
     def insert(self, data, pos):
         pass
     def search(self, data):
