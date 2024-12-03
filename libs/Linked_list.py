@@ -1,12 +1,9 @@
-class Node:
-    def __init__(self, data):
-        self.next = self.prev = None
-        self.data = data
+import Node 
         
 class Linked_list:
     def __init__(self):
         self.head = self.tail = None
-        counter = 0
+        self.counter = 0
     
     def isEmpty(self):
         return self.counter == 0
@@ -22,7 +19,7 @@ class Linked_list:
             newNode.next = self.head
             self.head = newNode
             
-        counter += 1
+        self.counter += 1
     
     def append(self, data):
         pass
@@ -44,7 +41,7 @@ class Linked_list:
         temp = self.head
         self.head = self.head.next
         temp = temp.prev = temp.next = None
-        counter -= 1
+        self.counter -= 1
     
     def removeTail(self):
         pass
