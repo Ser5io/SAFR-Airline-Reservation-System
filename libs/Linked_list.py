@@ -179,6 +179,3 @@ class Linked_list:
             while temp:
                 temp = temp.next
                 self.removeItem(data)
-Llist = Linked_list()
-Llist.add(10)
-Llist.traverse()
