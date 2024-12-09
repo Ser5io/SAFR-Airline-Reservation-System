@@ -5,7 +5,7 @@ class Queue :
         self.head = self.tail = None
         self.counter = 0
         
-    # Check if the function is Empty or not
+    # Check if the list is Empty or not
     def isEmpty(self):
         return self.head == None
     
