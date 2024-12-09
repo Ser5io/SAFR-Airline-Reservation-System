@@ -58,27 +58,3 @@ class Stack:
             del temp
         self.top = None
         self.counter = 0
-
-stack = Stack()
-print(stack.getSize())
-stack.push(10)
-print(stack.getSize())
-stack.push(20)
-print(stack.getSize())
-
-stack.push(30)
-print(stack.getSize())
-
-stack.push(40)
-print(stack.getSize())
-
-print(stack.pop())
-print(stack.getSize())
-
-print(stack.peek())
-stack.display()
-print(stack.getSize())
-
-stack.clear()
-print(stack.getSize())
-stack.display()
