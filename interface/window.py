@@ -1,18 +1,14 @@
 import customtkinter
 
-class Window(customtkinter.CTk):
-    def __init__(self):
-        super().__init__()
-        # self.geometry("400x150")
+class Window(customtkinter.CTkFrame):
+    def __init__(self, master):
+        super().__init__(master)
     
     def draw_frame(self):
         pass
     
-    def configuer_layout(self):
+    def configure_layout(self):
         pass
     
     def clear_frame(self):
         pass
-    
-window = Window()
-window.mainloop()
