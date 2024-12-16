@@ -1,2 +1,7 @@
-interface/__pycache__
 libs/__pycache__
+interface/__pycache__
+__pycache__
+app.exe
+dist
+build
+SAFR
