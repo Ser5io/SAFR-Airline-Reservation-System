@@ -1,20 +1,8 @@
-import tkinter
 import customtkinter
 from PIL import ImageTk, Image
+from interface.window import Window
 
-# class Seats(customtkinter.CTkFrame):
-#     def __init__(self, master):
-#         super().__init__(master)
-
-
-
-
-
-
-
-
-
-class Seats(customtkinter.CTkFrame):
+class Seats(Window):
     def __init__(self, master):
         super().__init__(master)
         self.draw_frame()
@@ -37,7 +25,8 @@ class Seats(customtkinter.CTkFrame):
                                     text="SAFR",
                                     fg_color="white",
                                     text_color="black",
-                                    font=("Poppins", 25, "bold"))
+                                    font=("Poppins", 25, "bold")
+)
         logo.grid(row=0, 
                 column=0,
                 sticky='w')

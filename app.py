@@ -25,7 +25,7 @@ class App(customtkinter.CTk):
         self.oneway = One_Way(self)
         self.roundtrip = Round_Trip(self)
         self.seats = Seats(self)
-        self.finalticket = Final_Ticket(self, self.Uname, self.Ulocationfrom, self.Ulocationto, 'First', 'D5')
+        # self.finalticket = Final_Ticket(self, self.Uname, self.Ulocationfrom, self.Ulocationto, 'First', 'D5')
         
         self.Uname = 'ggggggg'
         self.Ulocationfrom = ''
@@ -33,7 +33,7 @@ class App(customtkinter.CTk):
         self.Uflighttype = ''
         self.Useat = ''
         
-        self.seats.grid(row=0, column=0, sticky='nesw')
+        self.roundtrip.grid(row=0, column=0, sticky='nesw')
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)
     
@@ -70,6 +70,9 @@ class App(customtkinter.CTk):
         self.roundtrip.grid_remove()
         
         self.seats.grid(row=0, column=0, sticky='nesw')
+        
+        
+        
         
     def go_to_finalticket(self):
         
