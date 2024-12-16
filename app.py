@@ -32,14 +32,13 @@ import customtkinter
     
 from interface.main_page import MainPage
 from interface.information import Information
-from interface.location_from import Location_From
-from interface.location_to import Location_To
+from interface.location import Location
 from interface.flight_type_page import Flight_Type_Page
 from interface.login import Login
 from interface.one_way_plan import One_Way
 from interface.round_trip_plan import Round_Trip
 from interface.seats import Seats
-from interface.final_ticket import Final_Ticket
+# from interface.ticket import Final_Ticket
 
 customtkinter.set_appearance_mode("light")
 customtkinter.set_default_color_theme("dark-blue")
@@ -55,15 +54,14 @@ class App(customtkinter.CTk):
         
         self.mainpage = MainPage(self) # DONE
         self.information = Information(self)
-        self.locationfrom = Location_From(self)
-        self.locationto = Location_To(self)
+        self.location = Location(self)
         self.flighttype = Flight_Type_Page(self)
         self.login = Login(self)
         self.oneway = One_Way(self)
         self.roundtrip = Round_Trip(self)
         self.seats = Seats(self)
         self.Uname = 'ggggggg'
-        self.finalticket = Final_Ticket(self, self.Uname, self.Ulocationfrom, self.Ulocationto, 'First', 'D5')
+        # self.finalticket = Final_Ticket(self, self.Uname, self.Ulocationfrom, self.Ulocationto, 'First', 'D5')
         
         
         self.Ulocationfrom = ''
@@ -71,7 +69,7 @@ class App(customtkinter.CTk):
         self.Uflighttype = ''
         self.Useat = ''
         
-        self.seats.grid(row=0, column=0, sticky='nesw')
+        self.location.grid(row=0, column=0, sticky='nesw')
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)
     
