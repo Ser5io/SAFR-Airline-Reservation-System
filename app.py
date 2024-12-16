@@ -1,25 +1,60 @@
 import customtkinter
+# from interface.invoice import Invoice
+# from interface.checkout import Checkout
+
+# customtkinter.set_appearance_mode("dark")
+# customtkinter.set_default_color_theme("theme/orange.json")
+
+# class App(customtkinter.CTk):
+#     def __init__(self, **kwargs):
+#         super().__init__()
+        
+#         self.geometry("300x300")
+#         self.title("SOSKI")
+        
+#         invoice = Invoice(master=self)
+#         checkout = Checkout(master=self)
+        
+#         self.current_window = 1
+#         self.windows = [checkout, invoice]
+        
+#         self.draw_window()
+    
+#     def draw_window(self):
+#         selected_window = self.windows[self.current_window]
+#         selected_window.draw_frame()
+        
+#     def create_back_button(self):
+#         pass
+    
+#     def create_next_button(self):
+#         pass
+    
 from interface.main_page import MainPage
-from interface.data_page import Data_page
-from interface.location_from import Location_From
-from interface.location_to import Location_To
+from interface.information import Information
+from interface.location import Location
 from interface.flight_type_page import Flight_Type_Page
 from interface.login import Login
 from interface.trips import One_Way
 from interface.trips import Round_Trip
 from interface.seats import Seats
-from interface.final_ticket import Final_Ticket
+# from interface.ticket import Final_Ticket
 
-
+customtkinter.set_appearance_mode("light")
+customtkinter.set_default_color_theme("dark-blue")
 
 class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
         
-        self.mainpage = MainPage(self)
-        self.datapage = Data_page(self)
-        self.locationfrom = Location_From(self)
-        self.locationto = Location_To(self)
+        self.geometry("1920x1080")
+        self.title('Welcome To SAFR')
+        self.iconbitmap("images/Logo.ico")
+        self.configure(fg_color="white")
+        
+        self.mainpage = MainPage(self) # DONE
+        self.information = Information(self)
+        self.location = Location(self)
         self.flighttype = Flight_Type_Page(self)
         self.login = Login(self)
         self.oneway = One_Way(self)
@@ -28,6 +63,9 @@ class App(customtkinter.CTk):
         # self.finalticket = Final_Ticket(self, self.Uname, self.Ulocationfrom, self.Ulocationto, 'First', 'D5')
         
         self.Uname = 'ggggggg'
+        # self.finalticket = Final_Ticket(self, self.Uname, self.Ulocationfrom, self.Ulocationto, 'First', 'D5')
+        
+        
         self.Ulocationfrom = ''
         self.Ulocationto = ''
         self.Uflighttype = ''
@@ -42,7 +80,6 @@ class App(customtkinter.CTk):
         self.datapage.grid(row=0, column=0, sticky='nesw')
         
     def go_to_locationFrom(self):
-        
         self.datapage.grid_remove()
         self.locationfrom.grid(row=0, column=0, sticky='nesw')
     
@@ -65,7 +102,6 @@ class App(customtkinter.CTk):
         self.roundtrip.grid(row=0, column=0, sticky='nesw')
         
     def go_to_seats(self):
-        
         self.oneway.grid_remove()
         self.roundtrip.grid_remove()
         self.seats.grid(row=0, column=0, sticky='nesw')
@@ -74,11 +110,8 @@ class App(customtkinter.CTk):
         
         
     def go_to_finalticket(self):
-        
         self.seats.grid_remove()
         self.finalticket.grid(row=0, column=0, sticky='nesw')
         
-
-
 app = App()
 app.mainloop()
