@@ -1,64 +1,43 @@
-import tkinter
 import customtkinter
+from interface.window import Window
 from PIL import ImageTk, Image
-# from login import Login
 
-
-
-customtkinter.set_appearance_mode("light")
-customtkinter.set_default_color_theme("dark-blue")
-
-class MainPage(customtkinter.CTkFrame):
+class MainPage(Window):
     def __init__(self, master):
         super().__init__(master)
-        
-        self.master.geometry("1920x1080")
-        self.master.title('Welcome To SAFR')
-        self.master.iconbitmap("images/Logo.ico")
+        self.draw_frame()
+    
+    def draw_frame(self):
         self.configure(fg_color="white")
-
-        original_header = Image.open("images/header.jpg")
-        resized_header = original_header.resize((1350, 450))
-        header = ImageTk.PhotoImage(resized_header)
-
-        self.l1 = customtkinter.CTkLabel(self,
-                            image=header,
-                            text="",
-                            justify="center")
-        self.l1.pack(pady=0)
-        self.l1.place(relx=0.5, rely=0.65, anchor="center")
-
-# -- The Header Text -------------------------------------------------------
-
-
-
-        self.heading = customtkinter.CTkLabel(self,
-                                        text="Find And Book\nA Great Experience",
-                                        fg_color="white",
-                                        text_color="black",
-                                        font=("Poppins", 60, "bold"),
-                                        justify="center")
-        self.heading.pack(pady=230)
-
-# -- navigation bar --------------------------------------------------------
-
+        self.configure_layout()
+        
+        self.create_background()
+        self.create_introduction()
+        self.create_navigation_bar()
+    
+    def create_navigation_bar(self):
         self.logo = customtkinter.CTkLabel(self,
-                            text="SAFR",
-                            fg_color="white",
-                            text_color="black",
-                            font=("Poppins", 25, "bold"))
-        self.logo.pack(pady=0)
-        self.logo.place(relx=0.065, rely=0.055, anchor="center")
+                                           text="SAFR",
+                                           fg_color="white",
+                                           text_color="black",
+                                           font=("Poppins", 25, "bold"))
+        self.logo.grid(row=0,
+                       column=0,
+                       pady=10,
+                       padx=10,
+                       sticky="w")
 
-        self.button1 = customtkinter.CTkButton(self,
-                                    text="Start Booking",
-                                    fg_color="white",
-                                    text_color="#1b4552",
-                                    corner_radius=100,
-                                    font=("Poppins", 15),
-                                    hover_color="#d1dbe4",
-                                    command=master.start_booking)
-        self.button1.place(x=562, y=40)
+        self.start_booking = customtkinter.CTkButton(self,
+                                                     text="Start Booking",
+                                                     fg_color="white",
+                                                     text_color="#1b4552",
+                                                     corner_radius=100,
+                                                     font=("Poppins", 15),
+                                                     hover_color="#d1dbe4",
+                                                     command=self.master.start_booking)
+        self.start_booking.grid(row=0,
+                                column=1,
+                                sticky="ew")
 
         self.loginButton = customtkinter.CTkButton(self,
                                     text="Login",
@@ -68,35 +47,70 @@ class MainPage(customtkinter.CTkFrame):
                                     font=("Poppins", 15),
                                     hover_color="#d1dbe4")
         
-        
-        self.loginButton.place(x=722, y=40)
+        self.loginButton.grid(row=0,
+                              column=2,
+                              sticky="ew")
 
-        self.button3 = customtkinter.CTkButton(self,
+        self.sign_up = customtkinter.CTkButton(self,
                                     text="Sign up",
                                     fg_color="white",
                                     text_color="#1b4552",
                                     corner_radius=100,
                                     font=("Poppins", 15),
                                     hover_color="#d1dbe4")
-        self.button3.place(x=882, y=40)
+        self.sign_up.grid(row=0,
+                              column=3,
+                              sticky="ew")
 
-        self.button4 = customtkinter.CTkButton(self,
+        self.my_ticket = customtkinter.CTkButton(self,
                                     text="My Ticket",
                                     fg_color="white",
                                     text_color="#1b4552",
                                     corner_radius=100,
                                     font=("Poppins", 15),
                                     hover_color="#d1dbe4")
-        self.button4.place(x=1042, y=40)
+        self.my_ticket.grid(row=0,
+                              column=4,
+                              sticky="ew")
 
-        self.button5 = customtkinter.CTkButton(self,
+        self.manager_system = customtkinter.CTkButton(self,
                                     text="Manager System",
                                     fg_color="white",
                                     text_color="#1b4552",
                                     corner_radius=100,
                                     font=("Poppins", 15),
                                     hover_color="#d1dbe4")
-        self.button5.place(x=1202, y=40)
-        
+        self.manager_system.grid(row=0,
+                              column=5,
+                              sticky="ew")
+    
+    def create_introduction(self):
+        self.introduction = customtkinter.CTkLabel(self,
+                                                   text="Find And Book\nA Great Experience",
+                                                   fg_color="white",
+                                                   text_color="black",
+                                                   font=("Poppins", 60, "bold"),
+                                                   justify="center")
+        self.introduction.grid(row=1,
+                               column=1,
+                               sticky="ew",
+                               columnspan=5)
+    
+    def create_background(self):
+        original_background = Image.open("images/header.jpg")
+        resized_background = original_background.resize((1350, 450))
+        background_image = ImageTk.PhotoImage(resized_background)
 
-# --------------------------------------------------------------------------
+        self.background = customtkinter.CTkLabel(self,
+                                                 image=background_image,
+                                                 text="")
+        self.background.grid(row=2,
+                             column=1,
+                             sticky="ew",
+                             columnspan=5)
+    
+    def configure_layout(self):
+        self.grid_columnconfigure((0, 6), weight=1)
+    
+    def clear_frame(self):
+        pass
