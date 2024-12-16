@@ -71,7 +71,7 @@ class App(customtkinter.CTk):
         self.Uflighttype = ''
         self.Useat = ''
         
-        self.information.grid(row=0, column=0, sticky='nsew')
+        self.seats.grid(row=0, column=0, sticky='nesw')
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)
     
