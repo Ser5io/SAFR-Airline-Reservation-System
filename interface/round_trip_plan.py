@@ -1,92 +1,53 @@
 import tkinter
 import customtkinter
 from PIL import ImageTk, Image
+from interface.window import Window
 
-class Round_Trip(customtkinter.CTkFrame):
+class Round_Trip(Window):
     def __init__(self, master):
         super().__init__(master)
         
-        self.master.geometry("1920x1080")
-        self.master.title('Welcome To SAFR')
-        self.master.iconbitmap("images/Logo.ico")
+        self.draw_frame()
+        
+        
+        
+    def draw_frame(self):
         self.configure(fg_color="white")
-
-
-
-        heading = customtkinter.CTkLabel(self,
-                                        text="Choose The Plan For Round-trip",
-                                        fg_color="white",
-                                        text_color="black",
-                                        font=("Poppins", 70, "bold"),
-                                        justify="center")
-        heading.pack(pady=170)
-
-        # -- navigation bar --------------------------------------------------------
-
+        self.configure_layout()
+        
+        self.create_navigation_bar()
+        self.create_choose_the_plan()
+        self.create_tickets()
+        
+        
+    def create_navigation_bar(self):
         logo = customtkinter.CTkLabel(self,
                                     text="SAFR",
                                     fg_color="white",
                                     text_color="black",
                                     font=("Poppins", 25, "bold"))
-        logo.pack(pady=0)
-        logo.place(relx=0.065, rely=0.055, anchor="center")
-
-        button1 = customtkinter.CTkButton(self,
-                                        text="Start Booking",
+        logo.grid(row=0,
+                column=0,
+                sticky='w')
+    
+    def create_choose_the_plan(self):
+        choosetheplan = customtkinter.CTkLabel(self,
+                                        text="Choose The Plan For Round-trip",
                                         fg_color="white",
-                                        text_color="#1b4552",
-                                        corner_radius=100,
-                                        font=("Poppins", 15),
-                                        hover_color="#d1dbe4")
-        button1.place(x=562, y=40)
-
-        button2 = customtkinter.CTkButton(self,
-                                        text="Login",
-                                        fg_color="white",
-                                        text_color="#1b4552",
-                                        corner_radius=100,
-                                        font=("Poppins", 15),
-                                        hover_color="#d1dbe4")
-        button2.place(x=722, y=40)
-
-        button3 = customtkinter.CTkButton(self,
-                                        text="Sign up",
-                                        fg_color="white",
-                                        text_color="#1b4552",
-                                        corner_radius=100,
-                                        font=("Poppins", 15),
-                                        hover_color="#d1dbe4")
-        button3.place(x=882, y=40)
-
-        button4 = customtkinter.CTkButton(self,
-                                        text="My Ticket",
-                                        fg_color="white",
-                                        text_color="#1b4552",
-                                        corner_radius=100,
-                                        font=("Poppins", 15),
-                                        hover_color="#d1dbe4")
-        button4.place(x=1042, y=40)
-
-        button5 = customtkinter.CTkButton(self,
-                                        text="Manager System",
-                                        fg_color="white",
-                                        text_color="#1b4552",
-                                        corner_radius=100,
-                                        font=("Poppins", 15),
-                                        hover_color="#d1dbe4")
-        button5.place(x=1202, y=40)
-
-        # --------------------------------------------------------------------------
-
+                                        text_color="black",
+                                        font=("Poppins", 70, "bold"),
+                                        justify="center")
+        choosetheplan.grid(row=1,
+                            column=1,
+                            columnspan=2,
+                            sticky='ew')
+    
+    def create_tickets(self):
         image_path1 = "images/ticket 5.png"
-        image1 = Image.open(image_path1).resize((2000, 2000))
-        button_image1 = customtkinter.CTkImage(light_image=image1, dark_image=image1, size=(660, 250))
-
-        def economy():
-            master.Uflighttype = 'Economy'
-            master.go_to_seats
+        economy_image = Image.open(image_path1).resize((2000, 2000))
+        button_image1 = customtkinter.CTkImage(light_image=economy_image, dark_image=economy_image, size=(660, 250))
         
-        ticket1 = customtkinter.CTkButton(self,
+        economy_button = customtkinter.CTkButton(self,
                                         image=button_image1,  # Set the image
                                         text="",
                                         fg_color="white",
@@ -95,18 +56,18 @@ class Round_Trip(customtkinter.CTkFrame):
                                         height=300,
                                         hover_color="#d1dbe4",
                                         corner_radius=10,
-                                        command=economy)
-        ticket1.place(x=200, y=350)
+                                        command=self.economy)
+        economy_button.grid(row=2,
+                    column=1,
+                    sticky='ew')
 
-        def premium_economy():
-            master.Uflighttype = 'Premium Economy'
-            master.go_to_seats
+        
         
         image_path2 = "images/ticket 6.png"
-        image2 = Image.open(image_path2).resize((2000, 2000))
-        button_image2 = customtkinter.CTkImage(light_image=image2, dark_image=image2, size=(660, 250))
+        primimage = Image.open(image_path2).resize((2000, 2000))
+        button_image2 = customtkinter.CTkImage(light_image=primimage, dark_image=primimage, size=(660, 250))
 
-        ticket2 = customtkinter.CTkButton(self,
+        prim_button = customtkinter.CTkButton(self,
                                         image=button_image2,  # Set the image
                                         text="",
                                         fg_color="white",
@@ -115,18 +76,17 @@ class Round_Trip(customtkinter.CTkFrame):
                                         height=300,
                                         hover_color="#d1dbe4",
                                         corner_radius=10,
-                                        command=premium_economy)
-        ticket2.place(x=1050, y=350)
+                                        command=self.premium_economy)
+        prim_button.grid(row=2,
+                    column=2,
+                    sticky='ew')
 
-        def business():
-            master.Uflighttype = 'Business'
-            master.go_to_seats
 
         image_path3 = "images/ticket 7.png"
-        image3 = Image.open(image_path3).resize((2000, 2000))
-        button_image3 = customtkinter.CTkImage(light_image=image3, dark_image=image3, size=(660, 250))
+        business_image = Image.open(image_path3).resize((2000, 2000))
+        button_image3 = customtkinter.CTkImage(light_image=business_image, dark_image=business_image, size=(660, 250))
 
-        ticket3 = customtkinter.CTkButton(self,
+        business_button = customtkinter.CTkButton(self,
                                         image=button_image3,  # Set the image
                                         text="",
                                         fg_color="white",
@@ -135,19 +95,16 @@ class Round_Trip(customtkinter.CTkFrame):
                                         height=300,
                                         hover_color="#d1dbe4",
                                         corner_radius=10,
-                                        command=business)
-        ticket3.place(x=200, y=650)
-
-
-        def first():
-            master.Uflighttype = 'First'
-            
+                                        command=self.business)
+        business_button.grid(row=3,
+                    column=1,
+                    sticky='ew')
         
         image_path4 = "images/ticket 8.png"
-        image4 = Image.open(image_path4).resize((2000, 2000))
-        button_image4 = customtkinter.CTkImage(light_image=image4, dark_image=image4, size=(660, 250))
+        first_image = Image.open(image_path4).resize((2000, 2000))
+        button_image4 = customtkinter.CTkImage(light_image=first_image, dark_image=first_image, size=(660, 250))
 
-        ticket4 = customtkinter.CTkButton(self,
+        first_button = customtkinter.CTkButton(self,
                                         image=button_image4,  # Set the image
                                         text="",
                                         fg_color="white",
@@ -156,5 +113,36 @@ class Round_Trip(customtkinter.CTkFrame):
                                         height=300,
                                         hover_color="#d1dbe4",
                                         corner_radius=10,
-                                        command=first)
-        ticket4.place(x=1050, y=650)
+                                        command=self.first)
+        first_button.grid(row=3,
+                    column=2,
+                    sticky='ew')
+
+    def economy(self):
+        self.master.Uflighttype = 'Economy'
+        self.master.roundtrip.grid_remove()
+        self.master.seats.grid(row=0, column=0, sticky='nesw')
+        
+        
+    def premium_economy(self):
+        self.master.Uflighttype = 'Premium Economy'
+        self.master.roundtrip.grid_remove()
+        self.master.seats.grid(row=0, column=0, sticky='nesw')
+        
+    
+    def business(self):
+        self.master.Uflighttype = 'Business'
+        self.master.roundtrip.grid_remove()
+        self.master.seats.grid(row=0, column=0, sticky='nesw')
+        
+    def first(self):
+        self.master.Uflighttype = 'First'
+        self.master.roundtrip.grid_remove()
+        self.master.seats.grid(row=0, column=0, sticky='nesw')
+    
+    def configure_layout(self):
+        self.grid_columnconfigure((1, 2), weight=1)
+        self.grid_columnconfigure(0, weight=0)
+    
+    def clear_frame(self):
+        pass
