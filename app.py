@@ -5,8 +5,8 @@ from interface.location_from import Location_From
 from interface.location_to import Location_To
 from interface.flight_type_page import Flight_Type_Page
 from interface.login import Login
-from interface.one_way_plan import One_Way
-from interface.round_trip_plan import Round_Trip
+from interface.trips import One_Way
+from interface.trips import Round_Trip
 from interface.seats import Seats
 from interface.final_ticket import Final_Ticket
 
@@ -68,7 +68,6 @@ class App(customtkinter.CTk):
         
         self.oneway.grid_remove()
         self.roundtrip.grid_remove()
-        
         self.seats.grid(row=0, column=0, sticky='nesw')
         
         
