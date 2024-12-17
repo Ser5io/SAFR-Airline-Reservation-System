@@ -126,7 +126,7 @@ class Information(Window):
                                         corner_radius=100,
                                         font=("Poppins", 30, "bold"),
                                         hover_color="#0065B4",
-                                        command=self.master.go_to_locationFrom)
+                                        command=self.master.go_to_location)
         next_button.grid(row=6,
                          column=1,
                          sticky="e")

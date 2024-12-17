@@ -6,7 +6,7 @@ class Ticket(Window):
     def __init__(self, master):
         super().__init__(master)
         
-        self.draw_frame()
+#         self.draw_frame()
         
     def draw_frame(self):
         self.configure_layout()
@@ -216,8 +216,8 @@ class Ticket(Window):
         seat_right.pack(pady=0)
         seat_right.place(relx=0.758, rely=0.828, anchor="w")
     
-    def configure_layout(self):
-        pass
+#     def configure_layout(self):
+#         pass
     
-    def clear_frame(self):
-        pass
+#     def clear_frame(self):
+#         pass
