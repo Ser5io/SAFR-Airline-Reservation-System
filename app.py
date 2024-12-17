@@ -38,7 +38,7 @@ class App(customtkinter.CTk):
         # ticket = Ticket(self)
         
         self.current_window = 0
-        self.windows = [mainpage, information]
+        self.windows = [login]
 
         self.configure_layout()
         self.windows[self.current_window].grid(row=0, column=0, sticky='nsew')
