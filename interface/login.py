@@ -3,11 +3,6 @@ import customtkinter
 from PIL import ImageTk, Image
 from interface.window import Window
 
-        
-#         # self.master.geometry("850x600")
-#         # self.master.iconbitmap("Logo.ico")
-#         # self.master.resizable(False, False)
-
 BGCOLOR = '#E8E8E8'
 
 class Login(Window):

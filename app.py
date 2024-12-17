@@ -9,6 +9,7 @@ from interface.trips import One_Way
 from interface.trips import Round_Trip
 from interface.seats import Seats
 from interface.ticket import Final_Ticket
+from interface.sign_up import Signup
 
 customtkinter.set_appearance_mode("light")
 customtkinter.set_default_color_theme("dark-blue")
@@ -27,6 +28,7 @@ class App(customtkinter.CTk):
         self.location = Location(self)
         self.flighttype = Flight_Type_Page(self)
         self.login = Login(self)
+        self.signup = Signup(self)
         self.oneway = One_Way(self)
         self.roundtrip = Round_Trip(self)
         self.seats = Seats(self)
@@ -41,7 +43,7 @@ class App(customtkinter.CTk):
         self.Uflighttype = ''
         self.Useat = ''
         
-        self.login.grid(row=0, column=0, sticky='nesw')
+        self.signup.grid(row=0, column=0, sticky='nesw')
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)
     
