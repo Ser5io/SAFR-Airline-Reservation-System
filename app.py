@@ -3,13 +3,15 @@ import customtkinter
 from interface.main_page import MainPage
 from interface.information import Information
 from interface.location import Location
-from interface.flight_type_page import Flight_Type_Page
+from interface.flight_type_page import FlightTypePage
 from interface.login import Login
+from interface.sign_up import Signup
 from interface.trips import One_Way
 from interface.trips import Round_Trip
 from interface.seats import Seats
-from interface.ticket import Final_Ticket
-from interface.sign_up import Signup
+from interface.ticket import Ticket
+from interface.checkout import Checkout
+from interface.invoice import Invoice
 
 customtkinter.set_appearance_mode("light")
 customtkinter.set_default_color_theme("dark-blue")
@@ -18,63 +20,48 @@ class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
         
-        self.geometry("1920x1080")
+        self.geometry("1366x768")
         self.title('Welcome To SAFR')
         self.iconbitmap("images/Logo.ico")
-        self.configure(fg_color="white")
         
-        self.mainpage = MainPage(self) # DONE
-        self.information = Information(self)
-        self.location = Location(self)
-        self.flighttype = Flight_Type_Page(self)
-        self.login = Login(self)
-        self.signup = Signup(self)
-        self.oneway = One_Way(self)
-        self.roundtrip = Round_Trip(self)
-        self.seats = Seats(self)
-        self.finalticket = Final_Ticket(self)
+        mainpage = MainPage(self)
+        login = Login(self)
+        signup = Signup(self)
+        information = Information(self)
+        location = Location(self)
+        flighttype = FlightTypePage(self)
+        oneway = One_Way(self)
+        roundtrip = Round_Trip(self)
+        seats = Seats(self)
+        checkout = Checkout(self)
+        # invoice = Invoice(self)
+        ticket = Ticket(self)
         
-        self.Uname = 'ggggggg'
-        # self.finalticket = Final_Ticket(self, self.Uname, self.Ulocationfrom, self.Ulocationto, 'First', 'D5')
-        
-        
-        self.Ulocationfrom = ''
-        self.Ulocationto = ''
-        self.Uflighttype = ''
-        self.Useat = ''
-        
-        self.signup.grid(row=0, column=0, sticky='nesw')
+        self.current_window = 0
+        self.windows = [mainpage, information, location,
+                        flighttype, oneway, seats, checkout, ticket]
+
+        self.configure_layout()
+        self.windows[self.current_window].grid(row=0, column=0, sticky='nsew')
+
+    def configure_layout(self):
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)
-    
-    def start_booking(self):
-        self.mainpage.grid_remove()
-        self.information.grid(row=0, column=0, sticky='nesw')
+
+    def show_next_frame(self):
+        self.windows[self.current_window].grid_remove()
         
-    def go_to_location(self):
-        self.information.grid_remove()
-        self.location.grid(row=0, column=0, sticky='nesw')
+        self.current_window += 1
+        self.windows[self.current_window].grid(row=0, column=0, sticky='nsew')
     
-    def go_to_flighttype(self):
-        self.location.grid_remove()
-        self.flighttype.grid(row=0, column=0, sticky='nesw')
-    
-    def go_to_oneway(self):
-        self.flighttype.grid_remove()
-        self.oneway.grid(row=0, column=0, sticky='nesw')
-    
-    def go_to_roundtrip(self):
-        self.flighttype.grid_remove()
-        self.roundtrip.grid(row=0, column=0, sticky='nesw')
+    def show_previous_frame(self):
+        self.windows[self.current_window].grid_remove()
         
-    def go_to_seats(self):
-        self.oneway.grid_remove()
-        self.roundtrip.grid_remove()
-        self.seats.grid(row=0, column=0, sticky='nesw')
-        
-    def go_to_finalticket(self):
-        self.seats.grid_remove()
-        self.finalticket.grid(row=0, column=0, sticky='nesw')
+        self.current_window -= 1
+        self.windows[self.current_window].grid(row=0, column=0, sticky='nsew')
+    
+    def show_home_frame(self):
+        pass
         
 app = App()
 app.mainloop()

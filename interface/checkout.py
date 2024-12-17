@@ -4,12 +4,12 @@ from interface.window import Window
 class Checkout(Window):
     def __init__(self, master):
         super().__init__(master)
+        self.draw_frame()
     
     def draw_frame(self):
-        self.master.geometry("800x300")
         self.configure_layout()
         
-        payment_info = Payment_Info(master=self.master)
+        payment_info = Payment_Info(master=self)
         payment_info.grid(row=0,
                           column=0,
                           padx=(10, 0),
@@ -17,7 +17,7 @@ class Checkout(Window):
                           sticky="nsew")
         payment_info.draw_frame()
         
-        shopping_cart_info = Shopping_Cart_Info(master=self.master)
+        shopping_cart_info = Shopping_Cart_Info(master=self)
         shopping_cart_info.grid(row=0,
                                 column=1,
                                 padx=10,
@@ -25,8 +25,8 @@ class Checkout(Window):
                                 sticky="nsew")
         
     def configure_layout(self):
-        self.master.grid_columnconfigure((0, 1), weight=1)
-        self.master.grid_rowconfigure(0, weight=1)
+        self.grid_columnconfigure((0, 1), weight=1)
+        self.grid_rowconfigure(0, weight=1)
     
     def clear_frame(self):
         pass

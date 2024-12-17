@@ -1,88 +1,37 @@
-import tkinter
 import customtkinter
+from interface.window import Window
 from PIL import ImageTk, Image
 
-
-class Flight_Type_Page(customtkinter.CTkFrame):
+class FlightTypePage(Window):
     def __init__(self, master):
         super().__init__(master)
         
-        self.master.geometry("1920x1080")
-        self.master.title('Welcome To SAFR')
-        self.master.iconbitmap("images/Logo.ico")
-        self.configure(fg_color="white")
-
-
-
-        heading = customtkinter.CTkLabel(self,
+        self.draw_frame()
+        
+    def draw_frame(self):
+        self.configure_layout()
+        
+        self.create_choosetypelabel()
+        self.create_oneway_button()
+        self.create_roundway_button()
+    
+    def create_choosetypelabel(self):
+        choosetype_label = customtkinter.CTkLabel(self,
                                         text="Which Flight Type Do You Want?",
                                         fg_color="white",
                                         text_color="black",
                                         font=("Poppins", 70, "bold"),
                                         justify="center")
-        heading.pack(pady=170)
-
-        # -- navigation bar --------------------------------------------------------
-
-        logo = customtkinter.CTkLabel(self,
-                                    text="SAFR",
-                                    fg_color="white",
-                                    text_color="black",
-                                    font=("Poppins", 25, "bold"))
-        logo.pack(pady=0)
-        logo.place(relx=0.065, rely=0.055, anchor="center")
-
-        button1 = customtkinter.CTkButton(self,
-                                        text="Start Booking",
-                                        fg_color="white",
-                                        text_color="#1b4552",
-                                        corner_radius=100,
-                                        font=("Poppins", 15),
-                                        hover_color="#d1dbe4")
-        button1.place(x=562, y=40)
-
-        button2 = customtkinter.CTkButton(self,
-                                        text="Login",
-                                        fg_color="white",
-                                        text_color="#1b4552",
-                                        corner_radius=100,
-                                        font=("Poppins", 15),
-                                        hover_color="#d1dbe4")
-        button2.place(x=722, y=40)
-
-        button3 = customtkinter.CTkButton(self,
-                                        text="Sign up",
-                                        fg_color="white",
-                                        text_color="#1b4552",
-                                        corner_radius=100,
-                                        font=("Poppins", 15),
-                                        hover_color="#d1dbe4")
-        button3.place(x=882, y=40)
-
-        button4 = customtkinter.CTkButton(self,
-                                        text="My Ticket",
-                                        fg_color="white",
-                                        text_color="#1b4552",
-                                        corner_radius=100,
-                                        font=("Poppins", 15),
-                                        hover_color="#d1dbe4")
-        button4.place(x=1042, y=40)
-
-        button5 = customtkinter.CTkButton(self,
-                                        text="Manager System",
-                                        fg_color="white",
-                                        text_color="#1b4552",
-                                        corner_radius=100,
-                                        font=("Poppins", 15),
-                                        hover_color="#d1dbe4")
-        button5.place(x=1202, y=40)
-
-        # --------------------------------------------------------------------------
-
-        img1 = ImageTk.PhotoImage(Image.open("images/one-way.png").resize((70, 70), Image.Resampling.LANCZOS))
-        btn1 = customtkinter.CTkButton(self,
+        choosetype_label.grid(row=0,
+                              column=0,
+                              sticky="ew",
+                              columnspan=2)
+    
+    def create_oneway_button(self):
+        oneway_image = ImageTk.PhotoImage(Image.open("images/one-way.png").resize((70, 70), Image.Resampling.LANCZOS))
+        oneway = customtkinter.CTkButton(self,
                                     text="One-way",
-                                    image=img1,
+                                    image=oneway_image,
                                     fg_color="#0E0055",
                                     text_color="#ffffff",
                                     width=425,
@@ -90,13 +39,16 @@ class Flight_Type_Page(customtkinter.CTkFrame):
                                     corner_radius=60,
                                     font=("Poppins", 30, "bold"),
                                     hover_color="#0065B4",
-                                    command=master.go_to_oneway)
-        btn1.place(x=1062.5, y=400)
-
-        img2 = ImageTk.PhotoImage(Image.open("images/round-trip.png").resize((70, 70), Image.Resampling.LANCZOS))
-        btn2 = customtkinter.CTkButton(self,
+                                    command=self.master.show_next_frame)
+        oneway.grid(row=1,
+                    column=0,
+                    sticky="ew")
+    
+    def create_roundway_button(self):
+        roundway_image = ImageTk.PhotoImage(Image.open("images/round-trip.png").resize((70, 70), Image.Resampling.LANCZOS))
+        roundway = customtkinter.CTkButton(self,
                                     text="Round-trip",
-                                    image=img2,
+                                    image=roundway_image,
                                     fg_color="#0E0055",
                                     text_color="#ffffff",
                                     width=425,
@@ -104,5 +56,13 @@ class Flight_Type_Page(customtkinter.CTkFrame):
                                     corner_radius=60,
                                     font=("Poppins", 30, "bold"),
                                     hover_color="#0065B4",
-                                    command=master.go_to_roundtrip)
-        btn2.place(x=425, y=400)
+                                    command=self.master.show_next_frame)
+        roundway.grid(row=1,
+                      column=1,
+                      sticky="ew")
+    
+    def configure_layout(self):
+        pass
+    
+    def clear_frame(self):
+        pass

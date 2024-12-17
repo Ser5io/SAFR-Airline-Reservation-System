@@ -3,7 +3,8 @@ import customtkinter
 class Window(customtkinter.CTkFrame):
     def __init__(self, master):
         super().__init__(master)
-    
+        self.configure(fg_color="white")
+        
     def draw_frame(self):
         pass
     

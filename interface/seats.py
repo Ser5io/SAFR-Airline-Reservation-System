@@ -117,18 +117,12 @@ class Seats(Window):
                                         corner_radius=100,
                                         font=("Poppins", 30, "bold"),
                                         hover_color="#0065B4",
-                                        command=self.master.go_to_finalticket)
+                                        command=self.master.show_next_frame)
         next.grid(row=4,
                 column=3,
                 sticky='ew',
                 padx=10,
                 pady=10)
-
-
-
-
-
-
     
     def configure_layout(self):
         self.grid_columnconfigure((1, 3), weight=1)
