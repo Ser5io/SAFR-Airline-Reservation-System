@@ -17,11 +17,11 @@ def button_function():
 sign = customtkinter.CTk()
 sign.geometry("850x600")
 sign.title('SAFR Sign up Page')
-sign.iconbitmap("Logo.ico")
+sign.iconbitmap("../images/Logo.ico")
 sign.resizable(False, False)
 
 
-img0 = ImageTk.PhotoImage(Image.open("pattern.png"))
+img0 = ImageTk.PhotoImage(Image.open("../images/pattern.png"))
 l1 = customtkinter.CTkLabel(master=sign, image=img0)
 l1.pack()
 
@@ -62,7 +62,7 @@ entry5 = customtkinter.CTkEntry(master=frame,
                                 show="*")
 entry5.place(x=50, y=270)
 
-img1 = ImageTk.PhotoImage(Image.open("add-contact_11710543.png").resize((20, 20), Image.Resampling.LANCZOS))
+img1 = ImageTk.PhotoImage(Image.open("../images/add-contact_11710543.png").resize((20, 20), Image.Resampling.LANCZOS))
 button1 = customtkinter.CTkButton(master=frame,
                                   text="Sign up",
                                   width=220,
@@ -77,7 +77,7 @@ l4 = customtkinter.CTkLabel(master=frame,
                             font=("Poppins", 11.5))
 l4.place(x=50, y=355)
 
-img4 = ImageTk.PhotoImage(Image.open("enter.png").resize((20, 20), Image.Resampling.LANCZOS))
+img4 = ImageTk.PhotoImage(Image.open("../images/enter.png").resize((20, 20), Image.Resampling.LANCZOS))
 button1 = customtkinter.CTkButton(master=frame,
                                   text="login",
                                   width=220,

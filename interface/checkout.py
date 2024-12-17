@@ -4,9 +4,9 @@ from interface.window import Window
 class Checkout(Window):
     def __init__(self, master):
         super().__init__(master)
+        self.draw_frame()
     
     def draw_frame(self):
-        self.master.geometry("800x300")
         self.configure_layout()
         
         payment_info = Payment_Info(master=self.master)

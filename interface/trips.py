@@ -1,6 +1,5 @@
-import tkinter
 import customtkinter
-from PIL import ImageTk, Image
+from PIL import Image
 from interface.window import Window
 
 class Round_Trip(Window):
@@ -9,8 +8,6 @@ class Round_Trip(Window):
         
         self.draw_frame()
         
-        
-        
     def draw_frame(self):
         self.configure(fg_color="white")
         self.configure_layout()
@@ -18,7 +15,6 @@ class Round_Trip(Window):
         self.create_navigation_bar()
         self.create_choose_the_plan()
         self.create_tickets()
-        
         
     def create_navigation_bar(self):
         logo = customtkinter.CTkLabel(self,
@@ -268,12 +264,10 @@ class One_Way(Window):
         self.master.roundtrip.grid_remove()
         self.master.seats.grid(row=0, column=0, sticky='nesw')
         
-        
     def premium_economy(self):
         self.master.Uflighttype = 'Premium Economy'
         self.master.roundtrip.grid_remove()
         self.master.seats.grid(row=0, column=0, sticky='nesw')
-        
     
     def business(self):
         self.master.Uflighttype = 'Business'
