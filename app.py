@@ -20,26 +20,25 @@ class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
         
-        self.geometry("1366x768")
-        self.title('Welcome To SAFR')
+        self.geometry("1000x600")
+        self.title('SAFR — Airline Reservation System')
         self.iconbitmap("images/Logo.ico")
         
         mainpage = MainPage(self)
-        login = Login(self)
-        signup = Signup(self)
+        # login = Login(self)
+        # signup = Signup(self)
         information = Information(self)
-        location = Location(self)
-        flighttype = FlightTypePage(self)
-        oneway = One_Way(self)
-        roundtrip = Round_Trip(self)
-        seats = Seats(self)
-        checkout = Checkout(self)
+        # location = Location(self)
+        # flight_type = FlightTypePage(self)
+        # oneway = One_Way(self)
+        # roundtrip = Round_Trip(self)
+        # seats = Seats(self)
+        # checkout = Checkout(self)
         # invoice = Invoice(self)
-        ticket = Ticket(self)
+        # ticket = Ticket(self)
         
         self.current_window = 0
-        self.windows = [mainpage, information, location,
-                        flighttype, oneway, seats, checkout, ticket]
+        self.windows = [mainpage, information]
 
         self.configure_layout()
         self.windows[self.current_window].grid(row=0, column=0, sticky='nsew')

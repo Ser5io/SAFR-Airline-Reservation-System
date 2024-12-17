@@ -195,7 +195,7 @@ class One_Way(Window):
                                         height=300,
                                         hover_color="#d1dbe4",
                                         corner_radius=10,
-                                        command=self.economy)
+                                        command=self.master.show_next_frame)
         economy_button.grid(row=2,
                     column=1,
                     sticky='ew')
@@ -215,7 +215,7 @@ class One_Way(Window):
                                         height=300,
                                         hover_color="#d1dbe4",
                                         corner_radius=10,
-                                        command=self.premium_economy)
+                                        command=self.master.show_next_frame)
         prim_button.grid(row=2,
                     column=2,
                     sticky='ew')
@@ -234,7 +234,7 @@ class One_Way(Window):
                                         height=300,
                                         hover_color="#d1dbe4",
                                         corner_radius=10,
-                                        command=self.business)
+                                        command=self.master.show_next_frame)
         business_button.grid(row=3,
                     column=1,
                     sticky='ew')
@@ -252,7 +252,7 @@ class One_Way(Window):
                                         height=300,
                                         hover_color="#d1dbe4",
                                         corner_radius=10,
-                                        command=self.first)
+                                        command=self.master.show_next_frame)
         first_button.grid(row=3,
                     column=2,
                     sticky='ew')

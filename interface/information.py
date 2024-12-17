@@ -1,6 +1,9 @@
 from interface.window import Window
 import customtkinter
 
+FONT_SIZE_MEDIUM = 16
+FONT_SIZE_LARGE = 40
+
 class Information(Window):
     def __init__(self, master):
         super().__init__(master)
@@ -19,92 +22,94 @@ class Information(Window):
     
     def create_enterdata_label(self):
         enterdata = customtkinter.CTkLabel(self,
-                                        text="Please Enter Your Data",
+                                        text="Enter your information..",
                                         fg_color="white",
                                         text_color="black",
-                                        font=("Poppins", 70, "bold"),
+                                        font=("Poppins", FONT_SIZE_LARGE, "bold"),
                                         justify="center")
         enterdata.grid(row=1,
-                       column=0,
+                       column=1,
                        sticky="ew",
                        columnspan=2)
         
     def create_name_box(self):
         name_label = customtkinter.CTkLabel(self,
                                     text="Name : ",
-                                    font=("Poppins", 30, "bold"))
+                                    font=("Poppins", FONT_SIZE_MEDIUM, "bold"))
         name_label.grid(row=2,
-                        column=0,
-                        sticky="ew")
+                        column=1,
+                        pady=(10, 0),
+                        sticky="e")
 
         name = customtkinter.CTkEntry(self,
                                       placeholder_text="Name",
-                                      width=500,
-                                      height=40,
                                       fg_color="#d1dbe4",
                                       text_color="black",
                                       placeholder_text_color="gray",
                                       border_width=0,
                                       corner_radius=100)
         name.grid(row=2,
-                  column=1,
+                  column=2,
+                  padx=(10, 0),
+                  pady=(10, 0),
                   sticky="ew")
     
     def create_national_id(self):
         national_id_label = customtkinter.CTkLabel(self,
-                                    text="National ID : ",
-                                    font=("Poppins", 30, "bold"))
+                                    text="National ID:",
+                                    font=("Poppins", FONT_SIZE_MEDIUM, "bold"))
         national_id_label.grid(row=3,
-                               column=0,
-                               sticky="ew")
+                               column=1,
+                               pady=(10, 0),
+                               sticky="e")
 
         national_id = customtkinter.CTkEntry(self,
                                              placeholder_text="National ID",
-                                             width=500,
-                                             height=40,
                                              fg_color="#d1dbe4",
                                              text_color="black",
                                              placeholder_text_color="gray",
                                              border_width=0,
                                              corner_radius=100)
         national_id.grid(row=3,
-                         column=1,
+                         column=2,
+                         padx=(10, 0),
+                         pady=(10, 0),
                          sticky="ew")
     
     def create_phonenumber(self):
         phonenumber_label = customtkinter.CTkLabel(self,
-                                    text="Phone Number : ",
-                                    font=("Poppins", 30, "bold"))
+                                    text="Phone Number:",
+                                    font=("Poppins", FONT_SIZE_MEDIUM, "bold"))
         phonenumber_label.grid(row=4,
-                               column=0,
-                               sticky="ew")
+                               column=1,
+                               pady=(10, 0),
+                               sticky="e")
 
         phonenumber = customtkinter.CTkEntry(self,
                                              placeholder_text="Phone Number",
-                                             width=500,
-                                             height=40,
                                              fg_color="#d1dbe4",
                                              text_color="black",
                                              placeholder_text_color="gray",
                                              border_width=0,
                                              corner_radius=100)
         phonenumber.grid(row=4,
-                         column=1,
+                         column=2,
+                         padx=(10, 0),
+                         pady=(10, 0),
                          sticky="ew")
     
     def create_travellers(self):
         travellers_label = customtkinter.CTkLabel(self,
-                                                  text="Travellers : ",
-                                                  font=("Poppins", 30, "bold"))
+                                                  text="Travellers: ",
+                                                  font=("Poppins", FONT_SIZE_MEDIUM, "bold"))
         travellers_label.grid(row=5,
-                              column=0,
-                              sticky="ew")
+                              column=1,
+                              pady=(10, 0),
+                              sticky="e")
 
         travellers_combobox_var = customtkinter.StringVar(value="Choose an Option..")
         travellers_combobox = customtkinter.CTkComboBox(self,
                                             values=["1", "2", "3"],
-                                            width=500,
-                                            height=40,
                                             fg_color="#d1dbe4",  # ComboBox background color
                                             text_color="black",
                                             border_width=0,
@@ -113,7 +118,9 @@ class Information(Window):
                                             corner_radius=30,
                                             variable=travellers_combobox_var)
         travellers_combobox.grid(row=5,
-                                 column=1,
+                                 column=2,
+                                 padx=(10, 0),
+                                 pady=(10, 0),
                                  sticky="ew")
     
     def create_next_button(self):
@@ -121,18 +128,20 @@ class Information(Window):
                                         text="Next >>",
                                         fg_color="#0E0055",
                                         text_color="#ffffff",
-                                        width=150,
-                                        height=60,
                                         corner_radius=100,
-                                        font=("Poppins", 30, "bold"),
+                                        font=("Poppins", FONT_SIZE_MEDIUM, "bold"),
                                         hover_color="#0065B4",
                                         command=self.master.show_next_frame)
         next_button.grid(row=6,
-                         column=1,
+                         column=2,
+                         padx=(10, 0),
+                         pady=(10, 0),
                          sticky="e")
     
     def configure_layout(self):
-        self.grid_columnconfigure(1, weight=4)
+        self.grid_rowconfigure((0, 7), weight=1)
+        self.grid_columnconfigure(2, weight=3)
+        self.grid_columnconfigure((0, 3), weight=2)
 
     def clear_frame(self):
         pass

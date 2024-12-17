@@ -11,7 +11,6 @@ class Signup(Window):
         self.draw_frame()
     
     def draw_frame(self):
-        self.master.title('SAFR SignUp Page')
         self.configure_layout()
         
         self.create_back_ground()
@@ -23,8 +22,6 @@ class Signup(Window):
         self.create_password_entry()
         self.create_signup()
         self.create_login()
-        
-        
     
     def create_back_ground(self):
         self.bg_image = ImageTk.PhotoImage(Image.open("images/pattern.png"))
