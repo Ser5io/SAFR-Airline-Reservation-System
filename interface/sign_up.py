@@ -4,6 +4,8 @@ from PIL import ImageTk, Image
 from interface.window import Window
 
 BGCOLOR = '#E8E8E8'
+FONT_MAX_SIZE = 20
+FONT_MIN_SIZE = 15
 
 class Signup(Window):
     def __init__(self, master):
@@ -11,7 +13,6 @@ class Signup(Window):
         self.draw_frame()
     
     def draw_frame(self):
-        self.master.title('SAFR SignUp Page')
         self.configure_layout()
         
         self.create_back_ground()
@@ -33,100 +34,110 @@ class Signup(Window):
         
     def create_frame(self):
         frame = customtkinter.CTkFrame(self,
-                                    width=320,
-                                    height=400,
-                                    fg_color=BGCOLOR)
+                                    bg_color=BGCOLOR)
         frame.grid(row=1,
-                rowspan=7,
+                rowspan=8,
                 column=1,
                 sticky='nesw')
     
     def create_account(self):
         createacc = customtkinter.CTkLabel(self,
                             text="Create an Account!",
-                            font=("Poppins", 24, "bold"),
-                            fg_color=BGCOLOR)
+                            font=("Poppins", FONT_MAX_SIZE, "bold"),
+                            bg_color=BGCOLOR)
         createacc.grid(row=1,
                 column=1,
-                sticky='ew')
+                sticky='ew',
+                padx=20,
+                pady=(15,0))
     
     def create_firstname_entry(self):
         firstname = customtkinter.CTkEntry(self,
                                 placeholder_text="First name",
-                                width=220,
-                                fg_color=BGCOLOR)
+                                bg_color=BGCOLOR)
         firstname.grid(row=2,
                 column=1,
-                sticky='ew')
+                sticky='ew',
+                padx=20,
+                pady=(15,0))
         
     def create_lastname_entry(self):
         lastname = customtkinter.CTkEntry(self,
                                         placeholder_text="Last name",
-                                        width=220,
-                                        fg_color=BGCOLOR)
+                                        bg_color=BGCOLOR)
         lastname.grid(row=3,
                 column=1,
-                sticky='ew')
+                sticky='ew',
+                padx=20,
+                pady=(15,0))
         
     def create_username_entry(self):
         username = customtkinter.CTkEntry(self,
                                         placeholder_text="Username",
-                                        width=220,
-                                        fg_color=BGCOLOR)
+                                        bg_color=BGCOLOR)
         username.grid(row=4,
                 column=1,
-                sticky='ew')
+                sticky='ew',
+                padx=20,
+                pady=(15,0))
         
     def create_password_entry(self):
         password = customtkinter.CTkEntry(self,
                                         placeholder_text="Password",
-                                        width=220,
                                         show="*",
-                                        fg_color=BGCOLOR)
+                                        bg_color=BGCOLOR)
         password.grid(row=5,
                 column=1,
-                sticky='ew')
+                sticky='ew',
+                padx=20,
+                pady=(15,0))
 
         confirm_password = customtkinter.CTkEntry(self,
                                         placeholder_text="Confirm password",
-                                        width=220,
                                         show="*",
-                                        fg_color=BGCOLOR)
+                                        bg_color=BGCOLOR)
         confirm_password.grid(row=5,
                             column=1,
-                            sticky='ew')
+                            sticky='ew',
+                            padx=20,
+                            pady=(15,0))
         
     def create_signup(self):
         signupimage = ImageTk.PhotoImage(Image.open("images/add-contact_11710543.png").resize((20, 20), Image.Resampling.LANCZOS))
         signupbutton = customtkinter.CTkButton(self,
                                         text="Sign up",
-                                        width=220,
                                         image=signupimage,
-                                        corner_radius=5,
-                                        font=("Poppins", 12, "bold"),
+                                        font=("Poppins", FONT_MIN_SIZE, "bold"),
+                                        bg_color=BGCOLOR,
                                         command=self.button_function)
         signupbutton.grid(row=6,
                         column=1,
-                        sticky='ew')
+                        sticky='ew',
+                        padx=20,
+                        pady=(15,0))
         
     def create_login(self):
         alreadyhaveacc = customtkinter.CTkLabel(self,
                                     text="Already have an account?",
-                                    font=("Poppins", 11.5))
+                                    font=("Poppins", FONT_MIN_SIZE),
+                                    bg_color=BGCOLOR)
         alreadyhaveacc.grid(row=7,
                         column=1,
-                        sticky='w')
+                        sticky='w',
+                        padx=20,
+                        pady=(15,0))
 
         enterimage = ImageTk.PhotoImage(Image.open("images/enter.png").resize((20, 20), Image.Resampling.LANCZOS))
         loginbutton = customtkinter.CTkButton(self,
                                             text="login",
-                                            width=220,
                                             image=enterimage,
-                                            corner_radius=5,
-                                            font=("Poppins", 12, "bold"))
+                                            font=("Poppins", FONT_MIN_SIZE, "bold"),
+                                            bg_color=BGCOLOR)
         loginbutton.grid(row=8,
                     column=1,
-                    sticky='ew')
+                    sticky='ew',
+                    padx=20,
+                    pady=(15,15))
 
         
     def button_function(self):

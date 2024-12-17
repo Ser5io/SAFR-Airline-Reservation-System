@@ -20,8 +20,8 @@ class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
         
-        self.geometry("1366x768")
-        self.title('Welcome To SAFR')
+        self.geometry("1000x600")
+        self.title('SAFR — Airline Reservation System')
         self.iconbitmap("images/Logo.ico")
         
         mainpage = MainPage(self)
@@ -38,8 +38,7 @@ class App(customtkinter.CTk):
         ticket = Ticket(self)
         
         self.current_window = 0
-        self.windows = [mainpage, information, location,
-                        flighttype, oneway, seats, checkout, ticket]
+        self.windows = [login]
 
         self.configure_layout()
         self.windows[self.current_window].grid(row=0, column=0, sticky='nsew')
