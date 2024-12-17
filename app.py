@@ -38,7 +38,7 @@ from interface.login import Login
 from interface.trips import One_Way
 from interface.trips import Round_Trip
 from interface.seats import Seats
-# from interface.ticket import Final_Ticket
+from interface.ticket import Ticket
 
 customtkinter.set_appearance_mode("light")
 customtkinter.set_default_color_theme("dark-blue")
@@ -47,12 +47,11 @@ class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
         
-        self.geometry("1920x1080")
+        self.geometry("1366x768")
         self.title('Welcome To SAFR')
         self.iconbitmap("images/Logo.ico")
-        self.configure(fg_color="white")
         
-        self.mainpage = MainPage(self) # DONE
+        self.mainpage = MainPage(self)
         self.information = Information(self)
         self.location = Location(self)
         self.flighttype = Flight_Type_Page(self)
@@ -60,18 +59,9 @@ class App(customtkinter.CTk):
         self.oneway = One_Way(self)
         self.roundtrip = Round_Trip(self)
         self.seats = Seats(self)
-        # self.finalticket = Final_Ticket(self, self.Uname, self.Ulocationfrom, self.Ulocationto, 'First', 'D5')
+        self.ticket = Ticket(self)
         
-        self.Uname = 'ggggggg'
-        # self.finalticket = Final_Ticket(self, self.Uname, self.Ulocationfrom, self.Ulocationto, 'First', 'D5')
-        
-        
-        self.Ulocationfrom = ''
-        self.Ulocationto = ''
-        self.Uflighttype = ''
-        self.Useat = ''
-        
-        self.roundtrip.grid(row=0, column=0, sticky='nesw')
+        self.ticket.grid(row=0, column=0, sticky='nesw')
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)
     
@@ -105,9 +95,6 @@ class App(customtkinter.CTk):
         self.oneway.grid_remove()
         self.roundtrip.grid_remove()
         self.seats.grid(row=0, column=0, sticky='nesw')
-        
-        
-        
         
     def go_to_finalticket(self):
         self.seats.grid_remove()
