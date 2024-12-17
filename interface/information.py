@@ -1,5 +1,6 @@
 from interface.window import Window
 import customtkinter
+from PIL import ImageTk, Image
 
 FONT_SIZE_MEDIUM = 16
 FONT_SIZE_LARGE = 40
@@ -13,6 +14,7 @@ class Information(Window):
         self.configure(fg_color="white")
         self.configure_layout()
         
+        self.create_logo()
         self.create_enterdata_label()
         self.create_name_box()
         self.create_national_id()
@@ -20,6 +22,24 @@ class Information(Window):
         self.create_travellers()
         self.create_next_button()
     
+    
+    def create_logo(self):
+        logo_icon = customtkinter.CTkImage(light_image=Image.open("images/Logo.ico"),
+                                                dark_image=Image.open("images/Logo.ico"))
+        logo = customtkinter.CTkLabel(self,
+                                    text="  SAFR",
+                                    fg_color="white",
+                                    text_color="black",
+                                    image=logo_icon,
+                                    compound="left",
+                                    anchor="w",
+                                    font=("Poppins", FONT_SIZE_MEDIUM, "bold"))
+        logo.grid(row=0,
+                column=0,
+                pady=10,
+                padx=10,
+                sticky="w")
+
     def create_enterdata_label(self):
         enterdata = customtkinter.CTkLabel(self,
                                         text="Enter your information..",
