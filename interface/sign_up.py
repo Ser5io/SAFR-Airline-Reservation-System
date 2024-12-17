@@ -1,4 +1,3 @@
-import tkinter
 import customtkinter
 from PIL import ImageTk, Image
 from interface.window import Window
@@ -24,8 +23,6 @@ class Signup(Window):
         self.create_password_entry()
         self.create_signup()
         self.create_login()
-        
-        
     
     def create_back_ground(self):
         self.bg_image = ImageTk.PhotoImage(Image.open("images/pattern.png"))
@@ -109,7 +106,7 @@ class Signup(Window):
                                         image=signupimage,
                                         font=("Poppins", FONT_MIN_SIZE, "bold"),
                                         bg_color=BGCOLOR,
-                                        command=self.button_function)
+                                        command=self.show_login_page)
         signupbutton.grid(row=6,
                         column=1,
                         sticky='ew',
@@ -132,26 +129,24 @@ class Signup(Window):
                                             text="login",
                                             image=enterimage,
                                             font=("Poppins", FONT_MIN_SIZE, "bold"),
-                                            bg_color=BGCOLOR)
+                                            bg_color=BGCOLOR,
+                                            command=self.show_login_page)
         loginbutton.grid(row=8,
                     column=1,
                     sticky='ew',
                     padx=20,
                     pady=(15,15))
-
         
-    def button_function(self):
-        self.destroy()
-        main_page = customtkinter.CTk()
-        main_page.geometry("850x500")
-        main_page.title('SAFR')
-        l1 = customtkinter.CTkLabel(master=main_page, text="Home Page", font=("Poppins", 50, "bold"))
-        l1.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
+    def show_login_page(self):
+        self.master.windows[self.master.current_window].grid_remove()
+        
+        self.master.current_window = 2
+        self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
 
     def configure_layout(self):
-        self.grid_columnconfigure((0,2), weight=2)
+        self.grid_columnconfigure((0, 2), weight=2)
         self.grid_columnconfigure(1, weight=0)
-        self.grid_rowconfigure((0,9), weight=1)
+        self.grid_rowconfigure((0, 9), weight=1)
     
     def clear_frame(self):
         pass

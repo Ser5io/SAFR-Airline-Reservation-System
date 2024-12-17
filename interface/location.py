@@ -101,8 +101,6 @@ class Location(Window):
                                                     "Emirates",
                                                     "Germany",
                                                     "Russia"],
-                                            width=1000,
-                                            height=40,
                                             fg_color="#d1dbe4",  # ComboBox background color
                                             text_color="black",
                                             border_width=0,

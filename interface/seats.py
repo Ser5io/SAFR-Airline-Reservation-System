@@ -6,8 +6,6 @@ class Seats(Window):
     def __init__(self, master):
         super().__init__(master)
         self.draw_frame()
-        
-        
     
     def draw_frame(self):
         self.configure(fg_color="white")
@@ -95,7 +93,7 @@ class Seats(Window):
         
     def create_plane(self):
         planeimage = Image.open("images/seats.png")
-        resized_plane = planeimage.resize((288, 938))
+        resized_plane = planeimage.resize((214, 700))
         plane = ImageTk.PhotoImage(resized_plane)
 
         planeImage = customtkinter.CTkLabel(self,

@@ -28,17 +28,17 @@ class App(customtkinter.CTk):
         login = Login(self)
         signup = Signup(self)
         information = Information(self)
-        location = Location(self)
-        flighttype = FlightTypePage(self)
-        oneway = One_Way(self)
-        roundtrip = Round_Trip(self)
-        seats = Seats(self)
-        checkout = Checkout(self)
+        # location = Location(self)
+        # flight_type = FlightTypePage(self)
+        # oneway = One_Way(self)
+        # roundtrip = Round_Trip(self)
+        # seats = Seats(self)
+        # checkout = Checkout(self)
         # invoice = Invoice(self)
-        ticket = Ticket(self)
+        # ticket = Ticket(self)
         
         self.current_window = 0
-        self.windows = [login]
+        self.windows = [mainpage, information, login, signup]
 
         self.configure_layout()
         self.windows[self.current_window].grid(row=0, column=0, sticky='nsew')

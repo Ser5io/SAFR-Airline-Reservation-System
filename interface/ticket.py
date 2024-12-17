@@ -4,9 +4,8 @@ from PIL import ImageTk, Image
 
 class Ticket(Window):
     def __init__(self, master):
-        super().__init__(master)
-        
-#         self.draw_frame()
+        super().__init__(master)  
+        self.draw_frame()
         
     def draw_frame(self):
         self.configure_layout()
