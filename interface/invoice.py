@@ -5,10 +5,9 @@ from interface.ticket import Ticket
 class Invoice(Window):
     def __init__(self, master):
         super().__init__(master)
+        self.draw_frame()
     
     def draw_frame(self):
-        self.master.geometry("300x250")
-        
         label = customtkinter.CTkLabel(self.master,
                                        text="Thank you for flying with deez nuts.",
                                        fg_color="transparent")

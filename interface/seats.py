@@ -123,12 +123,6 @@ class Seats(Window):
                 sticky='ew',
                 padx=10,
                 pady=10)
-
-
-
-
-
-
     
     def configure_layout(self):
         self.grid_columnconfigure((1, 3), weight=1)

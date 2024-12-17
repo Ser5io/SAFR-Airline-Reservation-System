@@ -150,8 +150,6 @@ class One_Way(Window):
         
         self.draw_frame()
         
-        
-        
     def draw_frame(self):
         self.configure(fg_color="white")
         self.configure_layout()

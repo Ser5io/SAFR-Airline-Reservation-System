@@ -5,11 +5,13 @@ from interface.information import Information
 from interface.location import Location
 from interface.flight_type_page import FlightTypePage
 from interface.login import Login
+from interface.sign_up import Signup
 from interface.trips import One_Way
 from interface.trips import Round_Trip
 from interface.seats import Seats
 from interface.ticket import Ticket
 from interface.checkout import Checkout
+from interface.invoice import Invoice
 
 customtkinter.set_appearance_mode("light")
 customtkinter.set_default_color_theme("dark-blue")
@@ -24,13 +26,15 @@ class App(customtkinter.CTk):
         
         mainpage = MainPage(self)
         login = Login(self)
+        signup = Signup(self)
         information = Information(self)
         location = Location(self)
         flighttype = FlightTypePage(self)
         oneway = One_Way(self)
-        # roundtrip = Round_Trip(self)
+        roundtrip = Round_Trip(self)
         seats = Seats(self)
         checkout = Checkout(self)
+        # invoice = Invoice(self)
         ticket = Ticket(self)
         
         self.current_window = 0
