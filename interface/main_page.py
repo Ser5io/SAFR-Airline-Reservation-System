@@ -57,7 +57,8 @@ class MainPage(Window):
                                     text_color="#1b4552",
                                     corner_radius=100,
                                     font=("Poppins", FONT_SIZE_MEDIUM),
-                                    hover_color="#d1dbe4")
+                                    hover_color="#d1dbe4",
+                                    command=self.show_login_page)
         
         self.loginButton.grid(row=0,
                               column=2,
@@ -73,7 +74,8 @@ class MainPage(Window):
                                     text_color="#1b4552",
                                     corner_radius=100,
                                     font=("Poppins", FONT_SIZE_MEDIUM),
-                                    hover_color="#d1dbe4")
+                                    hover_color="#d1dbe4",
+                                    command=self.show_signup_page)
         self.sign_up.grid(row=0,
                             column=3,
                             pady=(25, 5),
@@ -109,6 +111,18 @@ class MainPage(Window):
                               pady=(25, 5),
                               padx=(10, 0),
                               sticky="ew")
+        
+    def show_login_page(self):
+        self.master.windows[self.master.current_window].grid_remove()
+        
+        self.master.current_window = 2
+        self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
+        
+    def show_signup_page(self):
+        self.master.windows[self.master.current_window].grid_remove()
+        
+        self.master.current_window = 3
+        self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
     
     def create_introduction(self):
         self.introduction = customtkinter.CTkLabel(self,

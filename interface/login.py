@@ -25,7 +25,6 @@ class Login(Window):
         self.create_facebook()
         self.create_signup()
         
-    
     def create_back_ground(self):
         self.bg_image = ImageTk.PhotoImage(Image.open("images/pattern.png"))
         bg_label = customtkinter.CTkLabel(master=self, image=self.bg_image, text="")
@@ -91,12 +90,18 @@ class Login(Window):
                                         image=loginimage,
                                         corner_radius=5,
                                         font=("Poppins", FONT_MIN_SIZE, "bold"),
-                                        command=self.button_function)
+                                        command=self.show_mainpage)
         loginbutton.grid(row=5,
                             column=1,
                             sticky='ew',
                             padx=20,
                             pady=(15,0))
+    
+    def show_mainpage(self):
+        self.master.windows[self.master.current_window].grid_remove()
+        
+        self.master.current_window = 0
+        self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
         
     def create_google(self):
         googleimage = ImageTk.PhotoImage(Image.open("images/Google__G__Logo.svg.webp").resize((20, 20), Image.Resampling.LANCZOS))
@@ -111,8 +116,7 @@ class Login(Window):
                                         text_color="black",
                                         fg_color=BGCOLOR,
                                         bg_color=BGCOLOR,
-                                        hover_color="gray",
-                                        command=self.button_function)
+                                        hover_color="gray")
         googlebutton.grid(row=6,
                             column=1,
                             sticky='w',
@@ -132,8 +136,7 @@ class Login(Window):
                                         text_color="black",
                                         fg_color=BGCOLOR,
                                         bg_color=BGCOLOR,
-                                        hover_color="gray",
-                                        command=self.button_function)
+                                        hover_color="gray")
         facebookbutton.grid(row=6,
                             column=1,
                             sticky='e',
@@ -157,22 +160,19 @@ class Login(Window):
                                         width=220,
                                         image=signupimage,
                                         corner_radius=5,
-                                        font=("Poppins", FONT_MIN_SIZE, "bold"))
+                                        font=("Poppins", FONT_MIN_SIZE, "bold"),
+                                        command=self.show_signup_page)
         signupbutton.grid(row=8,
                     column=1,
                     sticky='ew',
                     padx=20,
                     pady=(0,15))
-
-
-    def button_function(self):
-        self.destroy()
-        main_page = customtkinter.CTk()
-        main_page.geometry("850x500")
-        main_page.title('SAFR')
-        l1 = customtkinter.CTkLabel(master=main_page, text="Home Page", font=("Poppins", 50, "bold"))
-        l1.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
-        main_page.mainloop()
+        
+    def show_signup_page(self):
+        self.master.windows[self.master.current_window].grid_remove()
+        
+        self.master.current_window = 3
+        self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
     
     def configure_layout(self):
         self.grid_columnconfigure((0,2), weight=2)

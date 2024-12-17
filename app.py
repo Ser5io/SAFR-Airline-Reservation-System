@@ -25,8 +25,8 @@ class App(customtkinter.CTk):
         self.iconbitmap("images/Logo.ico")
         
         mainpage = MainPage(self)
-        # login = Login(self)
-        # signup = Signup(self)
+        login = Login(self)
+        signup = Signup(self)
         information = Information(self)
         # location = Location(self)
         # flight_type = FlightTypePage(self)
@@ -38,7 +38,7 @@ class App(customtkinter.CTk):
         # ticket = Ticket(self)
         
         self.current_window = 0
-        self.windows = [login]
+        self.windows = [mainpage, information, login, signup]
 
         self.configure_layout()
         self.windows[self.current_window].grid(row=0, column=0, sticky='nsew')
