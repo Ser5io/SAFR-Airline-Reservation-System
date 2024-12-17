@@ -34,7 +34,7 @@ class MainPage(Window):
                                                      corner_radius=100,
                                                      font=("Poppins", 15),
                                                      hover_color="#d1dbe4",
-                                                     command=self.master.start_booking)
+                                                     command=self.master.show_next_frame)
         self.start_booking.grid(row=0,
                                 column=1,
                                 sticky="ew")

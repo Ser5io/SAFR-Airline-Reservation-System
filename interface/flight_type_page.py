@@ -39,7 +39,7 @@ class FlightTypePage(Window):
                                     corner_radius=60,
                                     font=("Poppins", 30, "bold"),
                                     hover_color="#0065B4",
-                                    command=self.master.go_to_oneway)
+                                    command=self.master.show_next_frame)
         oneway.grid(row=1,
                     column=0,
                     sticky="ew")
@@ -56,7 +56,7 @@ class FlightTypePage(Window):
                                     corner_radius=60,
                                     font=("Poppins", 30, "bold"),
                                     hover_color="#0065B4",
-                                    command=self.master.go_to_roundtrip)
+                                    command=self.master.show_next_frame)
         roundway.grid(row=1,
                       column=1,
                       sticky="ew")
