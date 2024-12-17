@@ -1,89 +1,146 @@
 import tkinter
 import customtkinter
 from PIL import ImageTk, Image
+from interface.window import Window
 
-customtkinter.set_appearance_mode("light")
-customtkinter.set_default_color_theme("dark-blue")
+BGCOLOR = '#E8E8E8'
 
-def button_function():
-    sign.destroy()
-    main_page = customtkinter.CTk()
-    main_page.geometry("850x500")
-    main_page.title('SAFR')
-    l1 = customtkinter.CTkLabel(master=main_page, text="Home Page", font=("Poppins", 50, "bold"))
-    l1.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
-    main_page.mainloop()
-
-sign = customtkinter.CTk()
-sign.geometry("850x600")
-sign.title('SAFR Sign up Page')
-sign.iconbitmap("../images/Logo.ico")
-sign.resizable(False, False)
-
-
-img0 = ImageTk.PhotoImage(Image.open("../images/pattern.png"))
-l1 = customtkinter.CTkLabel(master=sign, image=img0)
-l1.pack()
-
-frame = customtkinter.CTkFrame(master=l1,
-                               width=320,
-                               height=450)
-frame.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
-
-l2 = customtkinter.CTkLabel(master=frame,
+class Signup(Window):
+    def __init__(self, master):
+        super().__init__(master)
+        self.draw_frame()
+    
+    def draw_frame(self):
+        self.master.title('SAFR SignUp Page')
+        self.configure_layout()
+        
+        self.create_back_ground()
+        self.create_frame()
+        self.create_account()
+        self.create_firstname_entry()
+        self.create_lastname_entry()
+        self.create_username_entry()
+        self.create_password_entry()
+        self.create_signup()
+        self.create_login()
+        
+        
+    
+    def create_back_ground(self):
+        self.bg_image = ImageTk.PhotoImage(Image.open("images/pattern.png"))
+        bg_label = customtkinter.CTkLabel(master=self, image=self.bg_image, text="")
+        bg_label.grid(row=0, column=0, rowspan=10, columnspan=3, sticky="nsew")
+        
+    def create_frame(self):
+        frame = customtkinter.CTkFrame(self,
+                                    width=320,
+                                    height=400,
+                                    fg_color=BGCOLOR)
+        frame.grid(row=1,
+                rowspan=7,
+                column=1,
+                sticky='nesw')
+    
+    def create_account(self):
+        createacc = customtkinter.CTkLabel(self,
                             text="Create an Account!",
-                            font=("Poppins", 24, "bold"))
-l2.place(x=50, y=35)
-
-entry1 = customtkinter.CTkEntry(master=frame,
+                            font=("Poppins", 24, "bold"),
+                            fg_color=BGCOLOR)
+        createacc.grid(row=1,
+                column=1,
+                sticky='ew')
+    
+    def create_firstname_entry(self):
+        firstname = customtkinter.CTkEntry(self,
                                 placeholder_text="First name",
-                                width=220)
-entry1.place(x=50, y=90)
-
-entry2 = customtkinter.CTkEntry(master=frame,
-                                placeholder_text="Last name",
-                                width=220)
-entry2.place(x=50, y=135)
-
-entry3 = customtkinter.CTkEntry(master=frame,
-                                placeholder_text="Username",
-                                width=220)
-entry3.place(x=50, y=180)
-
-entry4 = customtkinter.CTkEntry(master=frame,
-                                placeholder_text="Password",
                                 width=220,
-                                show="*")
-entry4.place(x=50, y=225)
+                                fg_color=BGCOLOR)
+        firstname.grid(row=2,
+                column=1,
+                sticky='ew')
+        
+    def create_lastname_entry(self):
+        lastname = customtkinter.CTkEntry(self,
+                                        placeholder_text="Last name",
+                                        width=220,
+                                        fg_color=BGCOLOR)
+        lastname.grid(row=3,
+                column=1,
+                sticky='ew')
+        
+    def create_username_entry(self):
+        username = customtkinter.CTkEntry(self,
+                                        placeholder_text="Username",
+                                        width=220,
+                                        fg_color=BGCOLOR)
+        username.grid(row=4,
+                column=1,
+                sticky='ew')
+        
+    def create_password_entry(self):
+        password = customtkinter.CTkEntry(self,
+                                        placeholder_text="Password",
+                                        width=220,
+                                        show="*",
+                                        fg_color=BGCOLOR)
+        password.grid(row=5,
+                column=1,
+                sticky='ew')
 
-entry5 = customtkinter.CTkEntry(master=frame,
-                                placeholder_text="Confirm password",
-                                width=220,
-                                show="*")
-entry5.place(x=50, y=270)
+        confirm_password = customtkinter.CTkEntry(self,
+                                        placeholder_text="Confirm password",
+                                        width=220,
+                                        show="*",
+                                        fg_color=BGCOLOR)
+        confirm_password.grid(row=5,
+                            column=1,
+                            sticky='ew')
+        
+    def create_signup(self):
+        signupimage = ImageTk.PhotoImage(Image.open("images/add-contact_11710543.png").resize((20, 20), Image.Resampling.LANCZOS))
+        signupbutton = customtkinter.CTkButton(self,
+                                        text="Sign up",
+                                        width=220,
+                                        image=signupimage,
+                                        corner_radius=5,
+                                        font=("Poppins", 12, "bold"),
+                                        command=self.button_function)
+        signupbutton.grid(row=6,
+                        column=1,
+                        sticky='ew')
+        
+    def create_login(self):
+        alreadyhaveacc = customtkinter.CTkLabel(self,
+                                    text="Already have an account?",
+                                    font=("Poppins", 11.5))
+        alreadyhaveacc.grid(row=7,
+                        column=1,
+                        sticky='w')
 
-img1 = ImageTk.PhotoImage(Image.open("../images/add-contact_11710543.png").resize((20, 20), Image.Resampling.LANCZOS))
-button1 = customtkinter.CTkButton(master=frame,
-                                  text="Sign up",
-                                  width=220,
-                                  image=img1,
-                                  corner_radius=5,
-                                  font=("Poppins", 12, "bold"),
-                                  command=button_function)
-button1.place(x=50, y=315)
+        enterimage = ImageTk.PhotoImage(Image.open("images/enter.png").resize((20, 20), Image.Resampling.LANCZOS))
+        loginbutton = customtkinter.CTkButton(self,
+                                            text="login",
+                                            width=220,
+                                            image=enterimage,
+                                            corner_radius=5,
+                                            font=("Poppins", 12, "bold"))
+        loginbutton.grid(row=8,
+                    column=1,
+                    sticky='ew')
 
-l4 = customtkinter.CTkLabel(master=frame,
-                            text="Already have an account?",
-                            font=("Poppins", 11.5))
-l4.place(x=50, y=355)
+        
+    def button_function(self):
+        self.destroy()
+        main_page = customtkinter.CTk()
+        main_page.geometry("850x500")
+        main_page.title('SAFR')
+        l1 = customtkinter.CTkLabel(master=main_page, text="Home Page", font=("Poppins", 50, "bold"))
+        l1.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
 
-img4 = ImageTk.PhotoImage(Image.open("../images/enter.png").resize((20, 20), Image.Resampling.LANCZOS))
-button1 = customtkinter.CTkButton(master=frame,
-                                  text="login",
-                                  width=220,
-                                  image=img4,
-                                  corner_radius=5,
-                                  font=("Poppins", 12, "bold"))
-button1.place(x=50, y=380)
-
-sign.mainloop()
+    def configure_layout(self):
+        self.grid_columnconfigure((0,2), weight=2)
+        self.grid_columnconfigure(1, weight=0)
+        self.grid_rowconfigure((0,9), weight=1)
+    
+    def clear_frame(self):
+        pass
