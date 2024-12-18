@@ -36,9 +36,9 @@ class App(customtkinter.CTk):
         seats = Seats(self) #DONE
         checkout = Checkout(self)
         invoice = Invoice(self)
-        ticket = Ticket(self) 
+        ticket = Ticket(self) #DONE
         
-        self.current_window = 9
+        self.current_window = 0
         self.windows = [mainpage, information, location, flight_type,
                         oneway, roundtrip, seats, checkout, invoice,
                         ticket, login, signup]
@@ -62,18 +62,6 @@ class App(customtkinter.CTk):
     def configure_layout(self):
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)
-
-    # def show_next_frame(self):
-    #     self.windows[self.current_window].grid_remove()
-        
-    #     self.current_window += 1
-    #     self.windows[self.current_window].grid(row=0, column=0, sticky='nsew')
-    
-    # def show_previous_frame(self):
-    #     self.windows[self.current_window].grid_remove()
-        
-    #     self.current_window -= 1
-    #     self.windows[self.current_window].grid(row=0, column=0, sticky='nsew')
     
     def show_home_frame(self):
         pass
