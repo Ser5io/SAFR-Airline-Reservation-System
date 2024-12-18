@@ -1,6 +1,7 @@
 import customtkinter
 from PIL import Image
 from interface.window import Window
+from interface.ticket import Llist
 
 FONT_MAX_SIZE = 40
 FONT_MIN_SIZE = 15
@@ -129,24 +130,36 @@ class Round_Trip(Window):
                         pady=10)
 
     def show_seats_as_economy_page(self):
+        global Llist
+        Llist[4] = 'Economy'
+        
         self.master.windows[self.master.current_window].grid_remove()
         
         self.master.current_window = self.master.SEATS_PAGE
         self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
     
     def show_seats_as_prim_economy_page(self):
+        global Llist
+        Llist[4] = 'Premium'
+        
         self.master.windows[self.master.current_window].grid_remove()
         
         self.master.current_window = self.master.SEATS_PAGE
         self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
     
     def show_seats_as_business_page(self):
+        global Llist
+        Llist[4] = 'Business'
+        
         self.master.windows[self.master.current_window].grid_remove()
         
         self.master.current_window = self.master.SEATS_PAGE
         self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
     
     def show_seats_as_first_page(self):
+        global Llist
+        Llist[4] = 'First'
+        
         self.master.windows[self.master.current_window].grid_remove()
         
         self.master.current_window = self.master.SEATS_PAGE
@@ -286,29 +299,40 @@ class One_Way(Window):
                     pady=10)
 
     def show_seats_as_economy_page(self):
+        global Llist
+        Llist[4] = 'Economy'
+        
         self.master.windows[self.master.current_window].grid_remove()
         
         self.master.current_window = self.master.SEATS_PAGE
         self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
     
     def show_seats_as_prim_economy_page(self):
+        global Llist
+        Llist[4] = 'Premium'
+        
         self.master.windows[self.master.current_window].grid_remove()
         
         self.master.current_window = self.master.SEATS_PAGE
         self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
     
     def show_seats_as_business_page(self):
+        global Llist
+        Llist[4] = 'Business'
+        
         self.master.windows[self.master.current_window].grid_remove()
         
         self.master.current_window = self.master.SEATS_PAGE
         self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
     
     def show_seats_as_first_page(self):
+        global Llist
+        Llist[4] = 'First'
+        
         self.master.windows[self.master.current_window].grid_remove()
         
         self.master.current_window = self.master.SEATS_PAGE
         self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
-        
     
     def configure_layout(self):
         self.grid_columnconfigure((1, 2), weight=1)

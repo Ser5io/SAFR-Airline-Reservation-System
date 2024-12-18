@@ -1,6 +1,9 @@
 from interface.window import Window
+from interface.ticket import Llist
 import customtkinter
 from PIL import ImageTk, Image
+
+
 
 FONT_SIZE_MEDIUM = 16
 FONT_SIZE_LARGE = 40
@@ -21,6 +24,7 @@ class Information(Window):
         self.create_phonenumber()
         self.create_travellers()
         self.create_next_button()
+        
     
     
     def create_logo(self):
@@ -61,18 +65,19 @@ class Information(Window):
                         pady=(10, 0),
                         sticky="e")
 
-        name = customtkinter.CTkEntry(self,
+        self.name = customtkinter.CTkEntry(self,
                                       placeholder_text="Name",
                                       fg_color="#d1dbe4",
                                       text_color="black",
                                       placeholder_text_color="gray",
                                       border_width=0,
                                       corner_radius=100)
-        name.grid(row=2,
+        self.name.grid(row=2,
                   column=2,
                   padx=(10, 0),
                   pady=(10, 0),
                   sticky="ew")
+        
     
     def create_national_id(self):
         national_id_label = customtkinter.CTkLabel(self,
@@ -159,6 +164,9 @@ class Information(Window):
                          sticky="e")
         
     def show_location_page(self):
+        global Llist
+        Llist[0] = self.name.get()
+
         self.master.windows[self.master.current_window].grid_remove()
         
         self.master.current_window = self.master.LOCATION_PAGE

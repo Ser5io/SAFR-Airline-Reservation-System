@@ -5,6 +5,7 @@ class Window(customtkinter.CTkFrame):
         super().__init__(master)
         self.configure(fg_color="white")
         
+        
     def draw_frame(self):
         pass
     

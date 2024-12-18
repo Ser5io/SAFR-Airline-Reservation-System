@@ -1,6 +1,7 @@
 import customtkinter
 from PIL import ImageTk, Image
 from interface.window import Window
+from interface.ticket import Llist
 
 FONT_MAX_SIZE = 40
 FONT_MIN_SIZE = 15
@@ -64,7 +65,7 @@ class Seats(Window):
                     pady=(0,0))
 
         options = ["A", "B", "C", "D"]
-        section_combo_box = customtkinter.CTkComboBox(self,
+        self.section_combo_box = customtkinter.CTkComboBox(self,
                                             values=options,
                                             fg_color="#d1dbe4",  # ComboBox background color
                                             text_color="black",
@@ -72,8 +73,8 @@ class Seats(Window):
                                             dropdown_fg_color="#d1dbe4",  # Dropdown menu background color
                                             dropdown_text_color="black",  # Dropdown menu text color
                                             corner_radius=30)
-        section_combo_box.set("Choose an option")  # Set the default value
-        section_combo_box.grid(row=2, 
+        self.section_combo_box.set("Choose an option")  # Set the default value
+        self.section_combo_box.grid(row=2, 
                             column=1, 
                             columnspan=2, 
                             sticky='ew')
@@ -91,7 +92,7 @@ class Seats(Window):
         options = ["1", "2", "3", "4",
                 "5", "6", "7", "8",
                 "9", "10", "11", "12"]
-        number_combo_box = customtkinter.CTkComboBox(self,
+        self.number_combo_box = customtkinter.CTkComboBox(self,
                                             values=options,
                                             fg_color="#d1dbe4",  # ComboBox background color
                                             text_color="black",
@@ -99,8 +100,8 @@ class Seats(Window):
                                             dropdown_fg_color="#d1dbe4",  # Dropdown menu background color
                                             dropdown_text_color="black",  # Dropdown menu text color
                                             corner_radius=30)
-        number_combo_box.set("Choose an option")  # Set the default value
-        number_combo_box.grid(row=3,
+        self.number_combo_box.set("Choose an option")  # Set the default value
+        self.number_combo_box.grid(row=3,
                             column=1,
                             columnspan=2,
                             sticky='ew')
@@ -135,6 +136,9 @@ class Seats(Window):
                 pady=(20,0))
         
     def show_ticket_page(self):
+        global Llist
+        Llist[5] = self.section_combo_box.get() + self.number_combo_box.get()
+        
         self.master.windows[self.master.current_window].grid_remove()
         
         self.master.current_window = self.master.TICKET_PAGE
