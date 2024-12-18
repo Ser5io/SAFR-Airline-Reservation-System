@@ -115,13 +115,13 @@ class MainPage(Window):
     def show_login_page(self):
         self.master.windows[self.master.current_window].grid_remove()
         
-        self.master.current_window = 2
+        self.master.current_window = self.master.LOGIN_PAGE
         self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
         
     def show_signup_page(self):
         self.master.windows[self.master.current_window].grid_remove()
         
-        self.master.current_window = 3
+        self.master.current_window = self.master.SIGNUP_PAGE
         self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
     
     def create_introduction(self):
