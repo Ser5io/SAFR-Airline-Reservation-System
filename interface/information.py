@@ -88,14 +88,14 @@ class Information(Window):
                                pady=(10, 0),
                                sticky="e")
 
-        national_id = customtkinter.CTkEntry(self,
+        self.national_id = customtkinter.CTkEntry(self,
                                              placeholder_text="National ID",
                                              fg_color="#d1dbe4",
                                              text_color="black",
                                              placeholder_text_color="gray",
                                              border_width=0,
                                              corner_radius=100)
-        national_id.grid(row=3,
+        self.national_id.grid(row=3,
                          column=2,
                          padx=(10, 0),
                          pady=(10, 0),
@@ -110,14 +110,14 @@ class Information(Window):
                                pady=(10, 0),
                                sticky="e")
 
-        phonenumber = customtkinter.CTkEntry(self,
+        self.phonenumber = customtkinter.CTkEntry(self,
                                              placeholder_text="Phone Number",
                                              fg_color="#d1dbe4",
                                              text_color="black",
                                              placeholder_text_color="gray",
                                              border_width=0,
                                              corner_radius=100)
-        phonenumber.grid(row=4,
+        self.phonenumber.grid(row=4,
                          column=2,
                          padx=(10, 0),
                          pady=(10, 0),
@@ -132,17 +132,18 @@ class Information(Window):
                               pady=(10, 0),
                               sticky="e")
 
-        travellers_combobox_var = customtkinter.StringVar(value="Choose an Option..")
-        travellers_combobox = customtkinter.CTkComboBox(self,
-                                            values=["1", "2", "3"],
+
+        self.travellers_var = customtkinter.StringVar()
+        self.travellers_combobox = customtkinter.CTkComboBox(self,
+                                            values=["1"],
                                             fg_color="#d1dbe4",  # ComboBox background color
                                             text_color="black",
                                             border_width=0,
                                             dropdown_fg_color="#d1dbe4",  # Dropdown menu background color
                                             dropdown_text_color="black",  # Dropdown menu text color
                                             corner_radius=30,
-                                            variable=travellers_combobox_var)
-        travellers_combobox.grid(row=5,
+                                            variable=self.travellers_var)
+        self.travellers_combobox.grid(row=5,
                                  column=2,
                                  padx=(10, 0),
                                  pady=(10, 0),
@@ -166,6 +167,10 @@ class Information(Window):
     def show_location_page(self):
         global Llist
         Llist[0] = self.name.get()
+        self.name.delete(0, 'end')
+        self.national_id.delete(0, 'end')
+        self.phonenumber.delete(0, 'end')
+        self.travellers_combobox.set('')
 
         self.master.windows[self.master.current_window].grid_remove()
         

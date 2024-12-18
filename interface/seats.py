@@ -139,6 +139,9 @@ class Seats(Window):
         global Llist
         Llist[5] = self.section_combo_box.get() + self.number_combo_box.get()
         
+        self.section_combo_box.set('')
+        self.number_combo_box.set('')
+        
         self.master.windows[self.master.current_window].grid_remove()
         
         self.master.current_window = self.master.TICKET_PAGE

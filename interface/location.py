@@ -148,6 +148,9 @@ class Location(Window):
         Llist[1] = self.location_from_combobox.get()
         Llist[2] = self.location_to_combobox.get()
         
+        self.location_from_combobox.set('')
+        self.location_to_combobox.set('')
+        
         
         self.master.windows[self.master.current_window].grid_remove()
         
