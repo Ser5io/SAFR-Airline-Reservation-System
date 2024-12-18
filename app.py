@@ -23,23 +23,39 @@ class App(customtkinter.CTk):
         self.geometry("1000x600")
         self.title('SAFR — Airline Reservation System')
         self.iconbitmap("images/Logo.ico")
+        self.resizable(0, 0)
         
         mainpage = MainPage(self)
         login = Login(self)
         signup = Signup(self)
         information = Information(self)
-        # location = Location(self)
-        # flight_type = FlightTypePage(self)
-        # oneway = One_Way(self)
-        # roundtrip = Round_Trip(self)
-        # seats = Seats(self)
-        # checkout = Checkout(self)
-        # invoice = Invoice(self)
-        # ticket = Ticket(self)
+        location = Location(self)
+        flight_type = FlightTypePage(self)
+        oneway = One_Way(self)
+        roundtrip = Round_Trip(self)
+        seats = Seats(self)
+        checkout = Checkout(self)
+        invoice = Invoice(self)
+        ticket = Ticket(self)
         
         self.current_window = 0
-        self.windows = [mainpage, information, login, signup]
-
+        self.windows = [mainpage, information, location, flight_type,
+                        oneway, roundtrip, seats, checkout, invoice,
+                        ticket, login, signup]
+        
+        self.MAIN_PAGE = self.windows.index(mainpage)
+        self.INFORMATION_PAGE = self.windows.index(information)
+        self.LOCATION_PAGE = self.windows.index(location)
+        self.FLIGHT_TYPE_PAGE = self.windows.index(flight_type)
+        self.ONEWAY_PAGE = self.windows.index(oneway)
+        self.ROUNDTRIP_PAGE = self.windows.index(roundtrip)
+        self.SEATS_PAGE = self.windows.index(seats)
+        self.CHECKOUT_PAGE = self.windows.index(checkout)
+        self.INVOICE_PAGE = self.windows.index(invoice)
+        self.TICKET_PAGE = self.windows.index(ticket)
+        self.LOGIN_PAGE = self.windows.index(login)
+        self.SIGNUP_PAGE = self.windows.index(signup)
+        
         self.configure_layout()
         self.windows[self.current_window].grid(row=0, column=0, sticky='nsew')
 

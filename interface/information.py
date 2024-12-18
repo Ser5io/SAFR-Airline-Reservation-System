@@ -38,7 +38,7 @@ class Information(Window):
                 column=0,
                 pady=10,
                 padx=10,
-                sticky="w")
+                sticky="nw")
 
     def create_enterdata_label(self):
         enterdata = customtkinter.CTkLabel(self,
@@ -160,8 +160,8 @@ class Information(Window):
     
     def configure_layout(self):
         self.grid_rowconfigure((0, 7), weight=1)
-        self.grid_columnconfigure(2, weight=3)
-        self.grid_columnconfigure((0, 3), weight=2)
+        self.grid_columnconfigure((0, 3), weight=1)
+        self.grid_columnconfigure(2, weight=2)
 
     def clear_frame(self):
         pass
