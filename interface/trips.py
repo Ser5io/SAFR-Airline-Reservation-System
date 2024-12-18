@@ -62,7 +62,7 @@ class Round_Trip(Window):
                                         text_color="#ffffff",
                                         hover_color="#d1dbe4",
                                         corner_radius=10,
-                                        command=self.economy)
+                                        command=self.show_seats_as_economy_page)
         economy_button.grid(row=2,
                             column=0,
                             columnspan=2,
@@ -83,7 +83,7 @@ class Round_Trip(Window):
                                         text_color="#ffffff",
                                         hover_color="#d1dbe4",
                                         corner_radius=10,
-                                        command=self.premium_economy)
+                                        command=self.show_seats_as_prim_economy_page)
         prim_button.grid(row=2,
                         column=2,
                         sticky='ew',
@@ -102,7 +102,7 @@ class Round_Trip(Window):
                                         text_color="#ffffff",
                                         hover_color="#d1dbe4",
                                         corner_radius=10,
-                                        command=self.business)
+                                        command=self.show_seats_as_business_page)
         business_button.grid(row=3,
                             column=0,
                             columnspan=2,
@@ -121,35 +121,37 @@ class Round_Trip(Window):
                                         text_color="#ffffff",
                                         hover_color="#d1dbe4",
                                         corner_radius=10,
-                                        command=self.first)
+                                        command=self.show_seats_as_first_page)
         first_button.grid(row=3,
                         column=2,
                         sticky='ew',
                         padx=10,
                         pady=10)
 
-
-    def economy(self):
-        self.master.Uflighttype = 'Economy'
-        self.master.roundtrip.grid_remove()
-        self.master.seats.grid(row=0, column=0, sticky='nesw')
+    def show_seats_as_economy_page(self):
+        self.master.windows[self.master.current_window].grid_remove()
         
-        
-    def premium_economy(self):
-        self.master.Uflighttype = 'Premium Economy'
-        self.master.roundtrip.grid_remove()
-        self.master.seats.grid(row=0, column=0, sticky='nesw')
-        
+        self.master.current_window = self.master.SEATS_PAGE
+        self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
     
-    def business(self):
-        self.master.Uflighttype = 'Business'
-        self.master.roundtrip.grid_remove()
-        self.master.seats.grid(row=0, column=0, sticky='nesw')
+    def show_seats_as_prim_economy_page(self):
+        self.master.windows[self.master.current_window].grid_remove()
         
-    def first(self):
-        self.master.Uflighttype = 'First'
-        self.master.roundtrip.grid_remove()
-        self.master.seats.grid(row=0, column=0, sticky='nesw')
+        self.master.current_window = self.master.SEATS_PAGE
+        self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
+    
+    def show_seats_as_business_page(self):
+        self.master.windows[self.master.current_window].grid_remove()
+        
+        self.master.current_window = self.master.SEATS_PAGE
+        self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
+    
+    def show_seats_as_first_page(self):
+        self.master.windows[self.master.current_window].grid_remove()
+        
+        self.master.current_window = self.master.SEATS_PAGE
+        self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
+        
     
     def configure_layout(self):
         self.grid_columnconfigure((1, 2), weight=1)
@@ -217,7 +219,7 @@ class One_Way(Window):
                                         text_color="#ffffff",
                                         hover_color="#d1dbe4",
                                         corner_radius=10,
-                                        command=self.master.show_next_frame)
+                                        command=self.show_seats_as_economy_page)
         economy_button.grid(row=2,
                             column=0,
                             columnspan=2,
@@ -238,7 +240,7 @@ class One_Way(Window):
                                         text_color="#ffffff",
                                         hover_color="#d1dbe4",
                                         corner_radius=10,
-                                        command=self.master.show_next_frame)
+                                        command=self.show_seats_as_prim_economy_page)
         prim_button.grid(row=2,
                         column=2,
                         sticky='ew',
@@ -257,7 +259,7 @@ class One_Way(Window):
                                         text_color="#ffffff",
                                         hover_color="#d1dbe4",
                                         corner_radius=10,
-                                        command=self.master.show_next_frame)
+                                        command=self.show_seats_as_business_page)
         business_button.grid(row=3,
                             column=0,
                             columnspan=2,
@@ -276,32 +278,37 @@ class One_Way(Window):
                                         text_color="#ffffff",
                                         hover_color="#d1dbe4",
                                         corner_radius=10,
-                                        command=self.master.show_next_frame)
+                                        command=self.show_seats_as_first_page)
         first_button.grid(row=3,
                     column=2,
                     sticky='ew',
                     padx=10,
                     pady=10)
 
-    def economy(self):
-        self.master.Uflighttype = 'Economy'
-        self.master.roundtrip.grid_remove()
-        self.master.seats.grid(row=0, column=0, sticky='nesw')
+    def show_seats_as_economy_page(self):
+        self.master.windows[self.master.current_window].grid_remove()
         
-    def premium_economy(self):
-        self.master.Uflighttype = 'Premium Economy'
-        self.master.roundtrip.grid_remove()
-        self.master.seats.grid(row=0, column=0, sticky='nesw')
+        self.master.current_window = self.master.SEATS_PAGE
+        self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
     
-    def business(self):
-        self.master.Uflighttype = 'Business'
-        self.master.roundtrip.grid_remove()
-        self.master.seats.grid(row=0, column=0, sticky='nesw')
+    def show_seats_as_prim_economy_page(self):
+        self.master.windows[self.master.current_window].grid_remove()
         
-    def first(self):
-        self.master.Uflighttype = 'First'
-        self.master.roundtrip.grid_remove()
-        self.master.seats.grid(row=0, column=0, sticky='nesw')
+        self.master.current_window = self.master.SEATS_PAGE
+        self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
+    
+    def show_seats_as_business_page(self):
+        self.master.windows[self.master.current_window].grid_remove()
+        
+        self.master.current_window = self.master.SEATS_PAGE
+        self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
+    
+    def show_seats_as_first_page(self):
+        self.master.windows[self.master.current_window].grid_remove()
+        
+        self.master.current_window = self.master.SEATS_PAGE
+        self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
+        
     
     def configure_layout(self):
         self.grid_columnconfigure((1, 2), weight=1)

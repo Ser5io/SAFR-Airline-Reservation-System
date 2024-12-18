@@ -42,7 +42,10 @@ class MainPage(Window):
                                                      corner_radius=100,
                                                      font=("Poppins", FONT_SIZE_MEDIUM),
                                                      hover_color="#d1dbe4",
-                                                     command=self.master.show_next_frame)
+                                                     command=self.show_information_page)
+        
+        
+        
         self.start_booking.grid(row=0,
                                 column=1,
                                 pady=(25, 5),
@@ -111,6 +114,13 @@ class MainPage(Window):
                               pady=(25, 5),
                               padx=(10, 0),
                               sticky="ew")
+        
+        
+    def show_information_page(self):
+        self.master.windows[self.master.current_window].grid_remove()
+        
+        self.master.current_window = self.master.INFORMATION_PAGE
+        self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
         
     def show_login_page(self):
         self.master.windows[self.master.current_window].grid_remove()

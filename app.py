@@ -25,20 +25,20 @@ class App(customtkinter.CTk):
         self.iconbitmap("images/Logo.ico")
         self.resizable(0, 0)
         
-        mainpage = MainPage(self)
-        login = Login(self)
-        signup = Signup(self)
-        information = Information(self)
-        location = Location(self)
-        flight_type = FlightTypePage(self)
-        oneway = One_Way(self)
-        roundtrip = Round_Trip(self)
-        seats = Seats(self)
+        mainpage = MainPage(self) #DONE
+        login = Login(self) #DONE
+        signup = Signup(self) #DONE
+        information = Information(self) #DONE
+        location = Location(self) #DONE
+        flight_type = FlightTypePage(self) #DONE
+        oneway = One_Way(self) #DONE
+        roundtrip = Round_Trip(self) #DONE
+        seats = Seats(self) #DONE
         checkout = Checkout(self)
         invoice = Invoice(self)
-        ticket = Ticket(self)
+        ticket = Ticket(self) 
         
-        self.current_window = 0
+        self.current_window = 9
         self.windows = [mainpage, information, location, flight_type,
                         oneway, roundtrip, seats, checkout, invoice,
                         ticket, login, signup]
@@ -63,17 +63,17 @@ class App(customtkinter.CTk):
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)
 
-    def show_next_frame(self):
-        self.windows[self.current_window].grid_remove()
+    # def show_next_frame(self):
+    #     self.windows[self.current_window].grid_remove()
         
-        self.current_window += 1
-        self.windows[self.current_window].grid(row=0, column=0, sticky='nsew')
+    #     self.current_window += 1
+    #     self.windows[self.current_window].grid(row=0, column=0, sticky='nsew')
     
-    def show_previous_frame(self):
-        self.windows[self.current_window].grid_remove()
+    # def show_previous_frame(self):
+    #     self.windows[self.current_window].grid_remove()
         
-        self.current_window -= 1
-        self.windows[self.current_window].grid(row=0, column=0, sticky='nsew')
+    #     self.current_window -= 1
+    #     self.windows[self.current_window].grid(row=0, column=0, sticky='nsew')
     
     def show_home_frame(self):
         pass

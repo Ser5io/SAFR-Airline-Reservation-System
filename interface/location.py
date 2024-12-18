@@ -134,12 +134,18 @@ class Location(Window):
                                             corner_radius=100,
                                             font=("Poppins", FONT_MIN_SIZE, "bold"),
                                             hover_color="#0065B4",
-                                            command=self.master.show_next_frame)
+                                            command=self.show_flighttype_page)
         next_button.grid(row=4,
                         column=2,
                         pady=(10,0),
                         padx=(5,50),
                         sticky="e")
+    
+    def show_flighttype_page(self):
+        self.master.windows[self.master.current_window].grid_remove()
+        
+        self.master.current_window = self.master.FLIGHT_TYPE_PAGE
+        self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
         
     def configure_layout(self):
         self.grid_rowconfigure((0, 4), weight=0)

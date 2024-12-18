@@ -151,12 +151,18 @@ class Information(Window):
                                         corner_radius=100,
                                         font=("Poppins", FONT_SIZE_MEDIUM, "bold"),
                                         hover_color="#0065B4",
-                                        command=self.master.show_next_frame)
+                                        command=self.show_location_page)
         next_button.grid(row=6,
                          column=2,
                          padx=(10, 0),
                          pady=(10, 0),
                          sticky="e")
+        
+    def show_location_page(self):
+        self.master.windows[self.master.current_window].grid_remove()
+        
+        self.master.current_window = self.master.LOCATION_PAGE
+        self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
     
     def configure_layout(self):
         self.grid_rowconfigure((0, 7), weight=1)

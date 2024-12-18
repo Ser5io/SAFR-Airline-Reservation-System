@@ -100,7 +100,7 @@ class Login(Window):
     def show_mainpage(self):
         self.master.windows[self.master.current_window].grid_remove()
         
-        self.master.current_window = 0
+        self.master.current_window = self.master.MAIN_PAGE
         self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
         
     def create_google(self):
@@ -171,7 +171,7 @@ class Login(Window):
     def show_signup_page(self):
         self.master.windows[self.master.current_window].grid_remove()
         
-        self.master.current_window = 5
+        self.master.current_window = self.master.SIGNUP_PAGE
         self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
     
     def configure_layout(self):

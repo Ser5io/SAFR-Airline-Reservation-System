@@ -19,11 +19,6 @@ class FlightTypePage(Window):
         self.create_oneway_button()
         self.create_roundway_button()
     
-    
-    
-    
-    
-    
     def create_logo(self):
         logo_icon = customtkinter.CTkImage(light_image=Image.open("images/Logo.ico"),
                                                 dark_image=Image.open("images/Logo.ico"))
@@ -63,13 +58,19 @@ class FlightTypePage(Window):
                                     corner_radius=1000,
                                     font=("Poppins", FONT_MAX_SIZE, "bold"),
                                     hover_color="#0065B4",
-                                    command=self.master.show_next_frame)
+                                    command=self.show_oneway_page)
         oneway.grid(row=2,
                     column=0,
                     columnspan=2,
                     sticky="nesw",
                     padx=(60,20),
                     pady=(0,30))
+        
+    def show_oneway_page(self):
+        self.master.windows[self.master.current_window].grid_remove()
+        
+        self.master.current_window = self.master.ONEWAY_PAGE
+        self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
     
     def create_roundway_button(self):
         roundway_image = ImageTk.PhotoImage(Image.open("images/round-trip.png").resize((70, 70), Image.Resampling.LANCZOS))
@@ -81,12 +82,18 @@ class FlightTypePage(Window):
                                     corner_radius=1000,
                                     font=("Poppins", FONT_MAX_SIZE-8, "bold"),
                                     hover_color="#0065B4",
-                                    command=self.master.show_next_frame)
+                                    command=self.show_roundtrip_page)
         roundway.grid(row=2,
                     column=2,
                     sticky="nesw",
                     padx=(20,0),
                     pady=(0,30))
+        
+    def show_roundtrip_page(self):
+        self.master.windows[self.master.current_window].grid_remove()
+        
+        self.master.current_window = self.master.ROUNDTRIP_PAGE
+        self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
     
     def configure_layout(self):
         self.grid_columnconfigure((1,2), weight=2)

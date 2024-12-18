@@ -127,12 +127,19 @@ class Seats(Window):
                                         corner_radius=100,
                                         font=("Poppins", FONT_MIN_SIZE+5, "bold"),
                                         hover_color="#0065B4",
-                                        command=self.master.show_next_frame)
+                                        command=self.show_ticket_page)
         next.grid(row=4,
                 column=3,
                 sticky='ew',
                 padx=(50,50),
                 pady=(20,0))
+        
+    def show_ticket_page(self):
+        self.master.windows[self.master.current_window].grid_remove()
+        
+        self.master.current_window = self.master.TICKET_PAGE
+        self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
+    
     
     def configure_layout(self):
         self.grid_columnconfigure((1, 3), weight=1)
