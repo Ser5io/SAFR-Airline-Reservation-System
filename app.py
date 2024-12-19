@@ -56,6 +56,7 @@ class App(customtkinter.CTk):
         self.LOGIN_PAGE = self.windows.index(login)
         self.SIGNUP_PAGE = self.windows.index(signup)
         
+        
         self.configure_layout()
         self.windows[self.current_window].grid(row=0, column=0, sticky='nsew')
 

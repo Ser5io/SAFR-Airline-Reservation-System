@@ -2,6 +2,25 @@ import customtkinter
 from interface.window import Window
 from PIL import ImageTk, Image
 
+
+
+Uname = 'NULL'
+Ulocationfrom = 'NULL'
+Ulocationto = 'NULL'
+Utype = 'NULL'
+Uclass = 'NULL'
+Useat = 'NULL'
+
+
+Llist = [Uname,
+Ulocationfrom,
+Ulocationto,
+Utype,
+Uclass,
+Useat]
+
+
+
 FONT_MAX_SIZE = 40
 FONT_MIN_SIZE = 15
 TEST_COLOR = 'red'
@@ -12,6 +31,7 @@ class Ticket(Window):
         
     def draw_frame(self):
         self.configure_layout()
+        
         
         self.create_logo()
         self.create_frame()
@@ -27,6 +47,40 @@ class Ticket(Window):
         self.create_time_labels()
         self.create_seat_labels()
         self.create_home_page()
+        self.load()
+        
+    def load(self):
+        load_button = customtkinter.CTkButton(self,
+                                            text="load",
+                                            fg_color="#0E0055",
+                                            text_color="#ffffff",
+                                            corner_radius=100,
+                                            font=("Poppins", FONT_MIN_SIZE, "bold"),
+                                            hover_color="#0065B4",
+                                            command=self.set_data)
+        load_button.grid(row=1,
+                        column=0,
+                        pady=(10,10),
+                        padx=(5,0),
+                        sticky="w")
+    
+    
+    def set_data(self):
+        global Llist
+        self.name_left.configure(text=Llist[0])
+        self.name_right.configure(text=Llist[0])
+        
+        self.locationfrom_left.configure(text=Llist[1])
+        self.locationfrom_right.configure(text=Llist[1])
+        
+        self.locationto_left.configure(text=Llist[2])
+        self.locationto_right.configure(text=Llist[2])
+        
+        self.class_left.configure(text=Llist[4])
+        self.class_right.configure(text=Llist[4])
+        
+        self.seat_left.configure(text=Llist[5])
+        self.seat_right.configure(text=Llist[5])
     
     
     def create_logo(self):
@@ -85,55 +139,56 @@ class Ticket(Window):
                     padx=(0,0))
     
     def create_name_labels(self):
-        name_left = customtkinter.CTkLabel(self.frame,
-                                        text="Kareem Ghazi",
+        self.name_left = customtkinter.CTkLabel(self.frame,
+                                        text=Uname,
                                         justify="left",
                                         bg_color="#F7F7F7",
                                         fg_color="#F7F7F7",
                                         font=("Poppins", FONT_MIN_SIZE))
-        name_left.place(x=69 ,y=133 ,anchor="w")
+        self.name_left.place(x=69 ,y=133 ,anchor="w")
         
-        name_right = customtkinter.CTkLabel(self.frame,
-                                        text="Kareem Ghazi",
+        self.name_right = customtkinter.CTkLabel(self.frame,
+                                        text=Uname,
                                         justify="left",
                                         bg_color="#F7F7F7",
                                         fg_color="#F7F7F7",
                                         font=("Poppins", FONT_MIN_SIZE))
-        name_right.place(x=610, y=135, anchor="w")
+        self.name_right.place(x=610, y=135, anchor="w")
+        
     
     def create_from_labels(self):
-        locationfrom_left = customtkinter.CTkLabel(self.frame,
-                                        text="Egypt",
+        self.locationfrom_left = customtkinter.CTkLabel(self.frame,
+                                        text=Ulocationfrom,
                                         justify="left",
                                         bg_color="#F7F7F7",
                                         fg_color='#F7F7F7',
                                         font=("Poppins", FONT_MIN_SIZE))
-        locationfrom_left.place(x=69, y=170, anchor="w")
+        self.locationfrom_left.place(x=69, y=170, anchor="w")
         
-        locationfrom_right = customtkinter.CTkLabel(self.frame,
-                                        text="Egypt",
+        self.locationfrom_right = customtkinter.CTkLabel(self.frame,
+                                        text=Ulocationfrom,
                                         justify="left",
                                         bg_color="#F7F7F7",
                                         fg_color='#F7F7F7',
                                         font=("Poppins", FONT_MIN_SIZE))
-        locationfrom_right.place(x=610, y=170, anchor="w")
+        self.locationfrom_right.place(x=610, y=170, anchor="w")
         
     def create_to_labels(self):
-        locationto_left = customtkinter.CTkLabel(self.frame,
-                                        text="Saudi Arabia",
+        self.locationto_left = customtkinter.CTkLabel(self.frame,
+                                        text=Ulocationto,
                                         justify="left",
                                         bg_color="#F7F7F7",
                                         fg_color='#F7F7F7',
                                         font=("Poppins", FONT_MIN_SIZE))
-        locationto_left.place(x=49, y=205, anchor="w")
+        self.locationto_left.place(x=49, y=205, anchor="w")
         
-        locationto_right = customtkinter.CTkLabel(self.frame,
-                                        text="Saudi Arabia",
+        self.locationto_right = customtkinter.CTkLabel(self.frame,
+                                        text=Ulocationto,
                                         justify="left",
                                         bg_color="#F7F7F7",
                                         fg_color='#F7F7F7',
                                         font=("Poppins", FONT_MIN_SIZE))
-        locationto_right.place(x=595, y=205, anchor="w")
+        self.locationto_right.place(x=595, y=205, anchor="w")
         
     
     def create_date_labels(self):
@@ -155,21 +210,21 @@ class Ticket(Window):
         
     
     def create_class_labels(self):
-        class_left = customtkinter.CTkLabel(self.frame,
-                                            text="Economy",
+        self.class_left = customtkinter.CTkLabel(self.frame,
+                                            text=Uclass,
                                             justify="left",
                                             bg_color="#F7F7F7",
                                             fg_color="#F7F7F7",
                                             font=("Poppins", FONT_MIN_SIZE))
-        class_left.place(x=335, y=205, anchor="w")
+        self.class_left.place(x=335, y=205, anchor="w")
         
-        class_right = customtkinter.CTkLabel(self.frame,
-                                        text="Economy",
+        self.class_right = customtkinter.CTkLabel(self.frame,
+                                        text=Uclass,
                                         justify="left",
                                         bg_color="#F7F7F7",
                                         fg_color="#F7F7F7",
                                         font=("Poppins", FONT_MIN_SIZE))
-        class_right.place(x=712, y=246, anchor="nw")
+        self.class_right.place(x=712, y=246, anchor="nw")
         
     
     def create_gate_labels(self):
@@ -229,23 +284,23 @@ class Ticket(Window):
 
         
     def create_seat_labels(self):
-        seat_left = customtkinter.CTkLabel(self.frame,
-                                        text="36C",
+        self.seat_left = customtkinter.CTkLabel(self.frame,
+                                        text=Useat,
                                         justify="left",
                                         bg_color="#F7F7F7",
                                         fg_color="#F7F7F7",
                                         font=("Poppins", FONT_MAX_SIZE - 15))
-        seat_left.place(x=422, y=280, anchor="nw")
+        self.seat_left.place(x=422, y=280, anchor="nw")
 
 
 
-        seat_right = customtkinter.CTkLabel(self.frame,
-                                        text="36C",
+        self.seat_right = customtkinter.CTkLabel(self.frame,
+                                        text=Useat,
                                         justify="left",
                                         bg_color="#F7F7F7",
                                         fg_color="#F7F7F7",
                                         font=("Poppins", FONT_MIN_SIZE))
-        seat_right.place(x=712, y=292, anchor="nw")
+        self.seat_right.place(x=712, y=292, anchor="nw")
         
     def create_home_page(self):
         next_button = customtkinter.CTkButton(self,

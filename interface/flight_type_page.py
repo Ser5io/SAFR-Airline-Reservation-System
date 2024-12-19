@@ -1,5 +1,6 @@
 import customtkinter
 from interface.window import Window
+from interface.ticket import Llist
 from PIL import ImageTk, Image
 
 FONT_MAX_SIZE = 40
@@ -67,6 +68,9 @@ class FlightTypePage(Window):
                     pady=(0,30))
         
     def show_oneway_page(self):
+        global Llist
+        Llist[3] = 'oneway'
+        
         self.master.windows[self.master.current_window].grid_remove()
         
         self.master.current_window = self.master.ONEWAY_PAGE
@@ -90,6 +94,10 @@ class FlightTypePage(Window):
                     pady=(0,30))
         
     def show_roundtrip_page(self):
+        global Llist
+        Llist[3] = 'roundtrip'
+        
+        
         self.master.windows[self.master.current_window].grid_remove()
         
         self.master.current_window = self.master.ROUNDTRIP_PAGE

@@ -1,4 +1,5 @@
 from interface.window import Window
+from interface.ticket import Llist
 import customtkinter
 from PIL import ImageTk, Image
 
@@ -15,6 +16,7 @@ class Location(Window):
     def draw_frame(self):
         self.configure(fg_color="white")
         self.configure_layout()
+        
         
         self.create_logo()
         self.create_chooselocation()
@@ -63,8 +65,8 @@ class Location(Window):
                             padx=10,
                             sticky="w")
 
-        location_from_combobox_var = customtkinter.StringVar()
-        location_from = customtkinter.CTkComboBox(self,
+        self.location_from_combobox_var = customtkinter.StringVar()
+        self.location_from_combobox = customtkinter.CTkComboBox(self,
                                             values=["Egypt",
                                                     "America",
                                                     "England",
@@ -81,8 +83,8 @@ class Location(Window):
                                             dropdown_fg_color="#d1dbe4",  # Dropdown menu background color
                                             dropdown_text_color="black",  # Dropdown menu text color
                                             corner_radius=30,
-                                            variable=location_from_combobox_var)
-        location_from.grid(row=2,
+                                            variable=self.location_from_combobox_var)
+        self.location_from_combobox.grid(row=2,
                         column=2,
                         columnspan=2,
                         pady=(0,0),
@@ -99,8 +101,8 @@ class Location(Window):
                             pady=(0,0),
                             sticky="e")
 
-        location_to_combobox_var = customtkinter.StringVar()
-        location_to_combobox = customtkinter.CTkComboBox(self,
+        self.location_to_combobox_var = customtkinter.StringVar()
+        self.location_to_combobox = customtkinter.CTkComboBox(self,
                                             values=["Egypt",
                                                     "America",
                                                     "England",
@@ -117,8 +119,8 @@ class Location(Window):
                                             dropdown_fg_color="#d1dbe4",  # Dropdown menu background color
                                             dropdown_text_color="black",  # Dropdown menu text color
                                             corner_radius=30,
-                                            variable=location_to_combobox_var)
-        location_to_combobox.grid(row=3,
+                                            variable=self.location_to_combobox_var)
+        self.location_to_combobox.grid(row=3,
                             column=2,
                             columnspan=2,
                             padx=(5,100),
@@ -142,6 +144,14 @@ class Location(Window):
                         sticky="e")
     
     def show_flighttype_page(self):
+        global Llist
+        Llist[1] = self.location_from_combobox.get()
+        Llist[2] = self.location_to_combobox.get()
+        
+        self.location_from_combobox.set('')
+        self.location_to_combobox.set('')
+        
+        
         self.master.windows[self.master.current_window].grid_remove()
         
         self.master.current_window = self.master.FLIGHT_TYPE_PAGE
