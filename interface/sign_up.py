@@ -49,55 +49,55 @@ class Signup(Window):
                 pady=(15,0))
     
     def create_firstname_entry(self):
-        firstname = customtkinter.CTkEntry(self,
+        self.firstname = customtkinter.CTkEntry(self,
                                 placeholder_text="First name",
                                 bg_color=BGCOLOR)
-        firstname.grid(row=2,
+        self.firstname.grid(row=2,
                 column=1,
                 sticky='ew',
                 padx=20,
                 pady=(15,0))
         
     def create_lastname_entry(self):
-        lastname = customtkinter.CTkEntry(self,
+        self.lastname = customtkinter.CTkEntry(self,
                                         placeholder_text="Last name",
                                         bg_color=BGCOLOR)
-        lastname.grid(row=3,
+        self.lastname.grid(row=3,
                 column=1,
                 sticky='ew',
                 padx=20,
                 pady=(15,0))
         
     def create_username_entry(self):
-        username = customtkinter.CTkEntry(self,
+        self.username = customtkinter.CTkEntry(self,
                                         placeholder_text="Username",
                                         bg_color=BGCOLOR)
-        username.grid(row=4,
+        self.username.grid(row=4,
                 column=1,
                 sticky='ew',
                 padx=20,
                 pady=(15,0))
         
     def create_password_entry(self):
-        password = customtkinter.CTkEntry(self,
+        self.password = customtkinter.CTkEntry(self,
                                         placeholder_text="Password",
                                         show="*",
                                         bg_color=BGCOLOR)
-        password.grid(row=5,
+        self.password.grid(row=5,
                 column=1,
                 sticky='ew',
                 padx=20,
                 pady=(15,0))
 
-        confirm_password = customtkinter.CTkEntry(self,
+        self.confirm_password = customtkinter.CTkEntry(self,
                                         placeholder_text="Confirm password",
                                         show="*",
                                         bg_color=BGCOLOR)
-        confirm_password.grid(row=5,
-                            column=1,
-                            sticky='ew',
-                            padx=20,
-                            pady=(15,0))
+        # self.confirm_password.grid(row=6,
+        #                     column=1,
+        #                     sticky='ew',
+        #                     padx=20,
+        #                     pady=(15,0))
         
     def create_signup(self):
         signupimage = ImageTk.PhotoImage(Image.open("images/add-contact_11710543.png").resize((20, 20), Image.Resampling.LANCZOS))
@@ -106,18 +106,31 @@ class Signup(Window):
                                         image=signupimage,
                                         font=("Poppins", FONT_MIN_SIZE, "bold"),
                                         bg_color=BGCOLOR,
-                                        command=self.show_login_page)
+                                        command=self.show_mainpagelogin_page)
         signupbutton.grid(row=6,
                         column=1,
                         sticky='ew',
                         padx=20,
                         pady=(15,0))
         
+        self.errormsg = customtkinter.CTkLabel(self,
+                                        text='',
+                                        fg_color=BGCOLOR,
+                                        text_color="red",
+                                        font=("Poppins", FONT_MIN_SIZE, "bold"),
+                                        justify="center")
+        self.errormsg.grid(row=9,
+                      column=1,
+                      padx=(0,0),
+                      pady=(0,0),
+                      sticky='new')
+        
     def create_login(self):
         alreadyhaveacc = customtkinter.CTkLabel(self,
                                     text="Already have an account?",
                                     font=("Poppins", FONT_MIN_SIZE),
-                                    bg_color=BGCOLOR)
+                                    bg_color=BGCOLOR,
+                                    state='disabled')
         alreadyhaveacc.grid(row=7,
                         column=1,
                         sticky='w',
@@ -129,13 +142,34 @@ class Signup(Window):
                                             text="login",
                                             image=enterimage,
                                             font=("Poppins", FONT_MIN_SIZE, "bold"),
-                                            bg_color=BGCOLOR,
-                                            command=self.show_login_page)
+                                            bg_color=BGCOLOR)
         loginbutton.grid(row=8,
                     column=1,
                     sticky='ew',
                     padx=20,
                     pady=(15,15))
+        
+    def show_mainpagelogin_page(self):
+        if self.firstname.get() == '' or self.lastname.get() == '' or self.username.get() == '' or self.password.get() == '':
+            self.errormsg.configure(text='Please fill your informaions')
+            return
+
+        
+        
+        
+        self.master.mainpage_login.username.configure(text=self.username.get())
+        
+        self.firstname.delete(0, 'end')
+        self.lastname.delete(0, 'end')
+        self.username.delete(0, 'end')
+        self.password.delete(0, 'end')
+        self.confirm_password.delete(0, 'end')
+        self.errormsg.configure(text='')
+        
+        self.master.windows[self.master.current_window].grid_remove()
+        
+        self.master.current_window = self.master.MAIN_PAGE_LOGIN
+        self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
         
     def show_login_page(self):
         self.master.windows[self.master.current_window].grid_remove()

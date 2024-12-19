@@ -1,6 +1,7 @@
 import customtkinter
 
 from interface.main_page import MainPage
+from interface.main_page_login import MainPageLogin
 from interface.information import Information
 from interface.location import Location
 from interface.flight_type_page import FlightTypePage
@@ -25,36 +26,38 @@ class App(customtkinter.CTk):
         self.iconbitmap("images/Logo.ico")
         self.resizable(0, 0)
         
-        mainpage = MainPage(self) #DONE
-        login = Login(self) #DONE
-        signup = Signup(self) #DONE
-        information = Information(self) #DONE
-        location = Location(self) #DONE
-        flight_type = FlightTypePage(self) #DONE
-        oneway = One_Way(self) #DONE
-        roundtrip = Round_Trip(self) #DONE
-        seats = Seats(self) #DONE
-        checkout = Checkout(self)
-        invoice = Invoice(self)
-        ticket = Ticket(self) #DONE
+        self.mainpage = MainPage(self) #DONE
+        self.mainpage_login = MainPageLogin(self) #DONE
+        self.login = Login(self) #DONE
+        self.signup = Signup(self) #DONE
+        self.information = Information(self) #DONE
+        self.location = Location(self) #DONE
+        self.flight_type = FlightTypePage(self) #DONE
+        self.oneway = One_Way(self) #DONE
+        self.roundtrip = Round_Trip(self) #DONE
+        self.seats = Seats(self) #DONE
+        self.checkout = Checkout(self)
+        self.invoice = Invoice(self)
+        self.ticket = Ticket(self) #DONE
         
         self.current_window = 0
-        self.windows = [mainpage, information, location, flight_type,
-                        oneway, roundtrip, seats, checkout, invoice,
-                        ticket, login, signup]
+        self.windows = [self.mainpage, self.mainpage_login, self.information, self.location, self.flight_type,
+                        self.oneway, self.roundtrip, self.seats, self.checkout, self.invoice,
+                        self.ticket, self.login, self.signup]
         
-        self.MAIN_PAGE = self.windows.index(mainpage)
-        self.INFORMATION_PAGE = self.windows.index(information)
-        self.LOCATION_PAGE = self.windows.index(location)
-        self.FLIGHT_TYPE_PAGE = self.windows.index(flight_type)
-        self.ONEWAY_PAGE = self.windows.index(oneway)
-        self.ROUNDTRIP_PAGE = self.windows.index(roundtrip)
-        self.SEATS_PAGE = self.windows.index(seats)
-        self.CHECKOUT_PAGE = self.windows.index(checkout)
-        self.INVOICE_PAGE = self.windows.index(invoice)
-        self.TICKET_PAGE = self.windows.index(ticket)
-        self.LOGIN_PAGE = self.windows.index(login)
-        self.SIGNUP_PAGE = self.windows.index(signup)
+        self.MAIN_PAGE = self.windows.index(self.mainpage)
+        self.MAIN_PAGE_LOGIN = self.windows.index(self.mainpage_login)
+        self.INFORMATION_PAGE = self.windows.index(self.information)
+        self.LOCATION_PAGE = self.windows.index(self.location)
+        self.FLIGHT_TYPE_PAGE = self.windows.index(self.flight_type)
+        self.ONEWAY_PAGE = self.windows.index(self.oneway)
+        self.ROUNDTRIP_PAGE = self.windows.index(self.roundtrip)
+        self.SEATS_PAGE = self.windows.index(self.seats)
+        self.CHECKOUT_PAGE = self.windows.index(self.checkout)
+        self.INVOICE_PAGE = self.windows.index(self.invoice)
+        self.TICKET_PAGE = self.windows.index(self.ticket)
+        self.LOGIN_PAGE = self.windows.index(self.login)
+        self.SIGNUP_PAGE = self.windows.index(self.signup)
         
         
         self.configure_layout()

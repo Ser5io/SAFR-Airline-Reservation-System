@@ -1,5 +1,4 @@
 from interface.window import Window
-from interface.ticket import Llist
 import customtkinter
 from PIL import ImageTk, Image
 
@@ -65,7 +64,6 @@ class Location(Window):
                             padx=10,
                             sticky="w")
 
-        self.location_from_combobox_var = customtkinter.StringVar()
         self.location_from_combobox = customtkinter.CTkComboBox(self,
                                             values=["Egypt",
                                                     "America",
@@ -82,14 +80,15 @@ class Location(Window):
                                             border_width=0,
                                             dropdown_fg_color="#d1dbe4",  # Dropdown menu background color
                                             dropdown_text_color="black",  # Dropdown menu text color
-                                            corner_radius=30,
-                                            variable=self.location_from_combobox_var)
+                                            corner_radius=30)
+        self.location_from_combobox.set('')
         self.location_from_combobox.grid(row=2,
                         column=2,
                         columnspan=2,
                         pady=(0,0),
                         padx=(5,100),
                         sticky="ew")
+        
 
     def create_location_to(self):
         location_to_label = customtkinter.CTkLabel(self,
@@ -118,15 +117,15 @@ class Location(Window):
                                             border_width=0,
                                             dropdown_fg_color="#d1dbe4",  # Dropdown menu background color
                                             dropdown_text_color="black",  # Dropdown menu text color
-                                            corner_radius=30,
-                                            variable=self.location_to_combobox_var)
+                                            corner_radius=30)
+        self.location_to_combobox.set('')
         self.location_to_combobox.grid(row=3,
                             column=2,
                             columnspan=2,
                             padx=(5,100),
                             pady=(0,0),
                             sticky="ew")
-    
+        
     
     def create_next_button(self):
         next_button = customtkinter.CTkButton(self,
@@ -142,14 +141,33 @@ class Location(Window):
                         pady=(10,0),
                         padx=(5,50),
                         sticky="e")
+        
+        self.errormsg = customtkinter.CTkLabel(self,
+                                        text='',
+                                        fg_color="white",
+                                        text_color="red",
+                                        font=("Poppins", FONT_MIN_SIZE, "bold"),
+                                        justify="center")
+        self.errormsg.grid(row=5,
+                      column=2,
+                      padx=(10,0),
+                      pady=(10,0),
+                      sticky='ne') 
     
     def show_flighttype_page(self):
-        global Llist
-        Llist[1] = self.location_from_combobox.get()
-        Llist[2] = self.location_to_combobox.get()
+        if self.location_from_combobox.get() == '' or self.location_to_combobox.get() == '':
+            self.errormsg.configure(text='Please check the missing')
+            return
+        
+        self.master.ticket.locationfrom_left.configure(text=self.location_from_combobox.get())
+        self.master.ticket.locationfrom_right.configure(text=self.location_from_combobox.get())
+        
+        self.master.ticket.locationto_left.configure(text=self.location_to_combobox.get())
+        self.master.ticket.locationto_right.configure(text=self.location_to_combobox.get())
         
         self.location_from_combobox.set('')
         self.location_to_combobox.set('')
+        self.errormsg.configure(text='')
         
         
         self.master.windows[self.master.current_window].grid_remove()

@@ -1,5 +1,4 @@
 from interface.window import Window
-from interface.ticket import Llist
 import customtkinter
 from PIL import ImageTk, Image
 
@@ -143,6 +142,7 @@ class Information(Window):
                                             dropdown_text_color="black",  # Dropdown menu text color
                                             corner_radius=30,
                                             variable=self.travellers_var)
+        self.travellers_combobox.set('')
         self.travellers_combobox.grid(row=5,
                                  column=2,
                                  padx=(10, 0),
@@ -164,12 +164,34 @@ class Information(Window):
                          pady=(10, 0),
                          sticky="e")
         
+        self.errormsg = customtkinter.CTkLabel(self,
+                                        text='',
+                                        fg_color="white",
+                                        text_color="red",
+                                        font=("Poppins", FONT_SIZE_MEDIUM, "bold"),
+                                        justify="center")
+        self.errormsg.grid(row=7,
+                      column=2,
+                      padx=(10,0),
+                      pady=(10,0),
+                      sticky='ne')
+        
     def show_location_page(self):
-        global Llist
-        Llist[0] = self.name.get()
+        
+        if self.name.get() == '' or self.national_id.get() == '' or self.phonenumber.get() == '' or self.travellers_combobox.get() == '':
+            self.errormsg.configure(text='Please fill your informations')
+            return
+        elif len(self.name.get()) > 20:
+            self.errormsg.configure(text='you cant make the name more then 20 character')
+            return
+        
+        
+        self.master.ticket.name_left.configure(text=self.name.get())
+        self.master.ticket.name_right.configure(text=self.name.get())
         self.name.delete(0, 'end')
         self.national_id.delete(0, 'end')
         self.phonenumber.delete(0, 'end')
+        self.errormsg.configure(text='')
         self.travellers_combobox.set('')
 
         self.master.windows[self.master.current_window].grid_remove()

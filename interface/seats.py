@@ -1,7 +1,6 @@
 import customtkinter
 from PIL import ImageTk, Image
 from interface.window import Window
-from interface.ticket import Llist
 
 FONT_MAX_SIZE = 40
 FONT_MIN_SIZE = 15
@@ -73,7 +72,7 @@ class Seats(Window):
                                             dropdown_fg_color="#d1dbe4",  # Dropdown menu background color
                                             dropdown_text_color="black",  # Dropdown menu text color
                                             corner_radius=30)
-        self.section_combo_box.set("Choose an option")  # Set the default value
+        self.section_combo_box.set('')
         self.section_combo_box.grid(row=2, 
                             column=1, 
                             columnspan=2, 
@@ -100,7 +99,9 @@ class Seats(Window):
                                             dropdown_fg_color="#d1dbe4",  # Dropdown menu background color
                                             dropdown_text_color="black",  # Dropdown menu text color
                                             corner_radius=30)
-        self.number_combo_box.set("Choose an option")  # Set the default value
+        self.number_combo_box.set('')
+        
+
         self.number_combo_box.grid(row=3,
                             column=1,
                             columnspan=2,
@@ -135,12 +136,31 @@ class Seats(Window):
                 padx=(50,50),
                 pady=(20,0))
         
+        self.errormsg = customtkinter.CTkLabel(self,
+                                        text='',
+                                        fg_color="white",
+                                        text_color="red",
+                                        font=("Poppins", FONT_MIN_SIZE, "bold"),
+                                        justify="center")
+        self.errormsg.grid(row=5,
+                      column=3,
+                      padx=(10,0),
+                      pady=(10,0),
+                      sticky='ne')
+        
     def show_ticket_page(self):
-        global Llist
-        Llist[5] = self.section_combo_box.get() + self.number_combo_box.get()
+        if self.section_combo_box.get() == '' or self.number_combo_box.get() == '':
+            self.errormsg.configure(text='Please check the missing')
+            return
+        
+        
+        self.master.ticket.seat_left.configure(text=self.section_combo_box.get() + self.number_combo_box.get())
+        self.master.ticket.seat_right.configure(text=self.section_combo_box.get() + self.number_combo_box.get())
         
         self.section_combo_box.set('')
         self.number_combo_box.set('')
+        self.errormsg.configure(text='')
+
         
         self.master.windows[self.master.current_window].grid_remove()
         

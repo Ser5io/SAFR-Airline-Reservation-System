@@ -1,7 +1,6 @@
 import customtkinter
 from PIL import Image
 from interface.window import Window
-from interface.ticket import Llist
 
 FONT_MAX_SIZE = 40
 FONT_MIN_SIZE = 15
@@ -130,8 +129,8 @@ class Round_Trip(Window):
                         pady=10)
 
     def show_seats_as_economy_page(self):
-        global Llist
-        Llist[4] = 'Economy'
+        self.master.ticket.class_left.configure(text='Economy')
+        self.master.ticket.class_right.configure(text='Economy')
         
         self.master.windows[self.master.current_window].grid_remove()
         
@@ -139,8 +138,8 @@ class Round_Trip(Window):
         self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
     
     def show_seats_as_prim_economy_page(self):
-        global Llist
-        Llist[4] = 'Premium'
+        self.master.ticket.class_left.configure(text='Premium')
+        self.master.ticket.class_right.configure(text='Premium')
         
         self.master.windows[self.master.current_window].grid_remove()
         
@@ -148,8 +147,8 @@ class Round_Trip(Window):
         self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
     
     def show_seats_as_business_page(self):
-        global Llist
-        Llist[4] = 'Business'
+        self.master.ticket.class_left.configure(text='Business')
+        self.master.ticket.class_right.configure(text='Business')
         
         self.master.windows[self.master.current_window].grid_remove()
         
@@ -157,8 +156,8 @@ class Round_Trip(Window):
         self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
     
     def show_seats_as_first_page(self):
-        global Llist
-        Llist[4] = 'First'
+        self.master.ticket.class_left.configure(text='First')
+        self.master.ticket.class_right.configure(text='First')
         
         self.master.windows[self.master.current_window].grid_remove()
         
@@ -299,8 +298,8 @@ class One_Way(Window):
                     pady=10)
 
     def show_seats_as_economy_page(self):
-        global Llist
-        Llist[4] = 'Economy'
+        self.master.ticket.class_left.configure(text='Economy')
+        self.master.ticket.class_right.configure(text='Economy')
         
         self.master.windows[self.master.current_window].grid_remove()
         
@@ -308,8 +307,8 @@ class One_Way(Window):
         self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
     
     def show_seats_as_prim_economy_page(self):
-        global Llist
-        Llist[4] = 'Premium'
+        self.master.ticket.class_left.configure(text='Premium')
+        self.master.ticket.class_right.configure(text='Premium')
         
         self.master.windows[self.master.current_window].grid_remove()
         
@@ -317,8 +316,8 @@ class One_Way(Window):
         self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
     
     def show_seats_as_business_page(self):
-        global Llist
-        Llist[4] = 'Business'
+        self.master.ticket.class_left.configure(text='Business')
+        self.master.ticket.class_right.configure(text='Business')
         
         self.master.windows[self.master.current_window].grid_remove()
         
@@ -326,8 +325,8 @@ class One_Way(Window):
         self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
     
     def show_seats_as_first_page(self):
-        global Llist
-        Llist[4] = 'First'
+        self.master.ticket.class_left.configure(text='First')
+        self.master.ticket.class_right.configure(text='First')
         
         self.master.windows[self.master.current_window].grid_remove()
         

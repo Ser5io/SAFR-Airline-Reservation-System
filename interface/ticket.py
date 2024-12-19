@@ -47,40 +47,6 @@ class Ticket(Window):
         self.create_time_labels()
         self.create_seat_labels()
         self.create_home_page()
-        self.load()
-        
-    def load(self):
-        load_button = customtkinter.CTkButton(self,
-                                            text="load",
-                                            fg_color="#0E0055",
-                                            text_color="#ffffff",
-                                            corner_radius=100,
-                                            font=("Poppins", FONT_MIN_SIZE, "bold"),
-                                            hover_color="#0065B4",
-                                            command=self.set_data)
-        load_button.grid(row=1,
-                        column=0,
-                        pady=(10,10),
-                        padx=(5,0),
-                        sticky="w")
-    
-    
-    def set_data(self):
-        global Llist
-        self.name_left.configure(text=Llist[0])
-        self.name_right.configure(text=Llist[0])
-        
-        self.locationfrom_left.configure(text=Llist[1])
-        self.locationfrom_right.configure(text=Llist[1])
-        
-        self.locationto_left.configure(text=Llist[2])
-        self.locationto_right.configure(text=Llist[2])
-        
-        self.class_left.configure(text=Llist[4])
-        self.class_right.configure(text=Llist[4])
-        
-        self.seat_left.configure(text=Llist[5])
-        self.seat_right.configure(text=Llist[5])
     
     
     def create_logo(self):
@@ -310,17 +276,17 @@ class Ticket(Window):
                                             corner_radius=100,
                                             font=("Poppins", FONT_MIN_SIZE, "bold"),
                                             hover_color="#0065B4",
-                                            command=self.show_homepage_page)
+                                            command=self.show_homepage_login_page)
         next_button.grid(row=0,
                         column=1,
                         pady=(10,0),
                         padx=(5,50),
                         sticky="e")
     
-    def show_homepage_page(self):
+    def show_homepage_login_page(self):
         self.master.windows[self.master.current_window].grid_remove()
         
-        self.master.current_window = self.master.MAIN_PAGE
+        self.master.current_window = self.master.MAIN_PAGE_LOGIN
         self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
     
     def configure_layout(self):
