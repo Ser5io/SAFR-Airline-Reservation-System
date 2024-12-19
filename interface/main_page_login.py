@@ -4,8 +4,13 @@ from PIL import ImageTk, Image
 
 FONT_SIZE_MEDIUM = 16
 FONT_SIZE_LARGE = 44
+RED = '#E23032'
 
-class MainPage(Window):
+Username = 'Yousef'
+
+Llist = [Username]
+
+class MainPageLogin(Window):
     def __init__(self, master):
         super().__init__(master)
         self.draw_frame()
@@ -42,8 +47,7 @@ class MainPage(Window):
                                                      corner_radius=100,
                                                      font=("Poppins", FONT_SIZE_MEDIUM),
                                                      hover_color="#d1dbe4",
-                                                     command=self.show_information_page,
-                                                     state='disabled')
+                                                     command=self.show_information_page)
         
         
         
@@ -53,8 +57,9 @@ class MainPage(Window):
                                 padx=(10, 0),
                                 sticky="ew")
 
-        self.loginButton = customtkinter.CTkButton(self,
-                                    text="Login",
+
+        self.username = customtkinter.CTkButton(self,
+                                    text=Llist[0],
                                     fg_color="white",
                                     border_color="#1b4552",
                                     border_width=2,
@@ -62,26 +67,25 @@ class MainPage(Window):
                                     corner_radius=100,
                                     font=("Poppins", FONT_SIZE_MEDIUM),
                                     hover_color="#d1dbe4",
-                                    command=self.show_login_page,
                                     state='disabled')
         
-        self.loginButton.grid(row=0,
+        self.username.grid(row=0,
                               column=2,
                               pady=(25, 5),
                               padx=(10, 0),
                               sticky="ew")
 
-        self.sign_up = customtkinter.CTkButton(self,
-                                    text="Sign up",
-                                    fg_color="white",
-                                    border_color="#1b4552",
+        self.logout = customtkinter.CTkButton(self,
+                                    text="Logout",
+                                    fg_color=RED,
+                                    border_color="black",
                                     border_width=2,
-                                    text_color="#1b4552",
+                                    text_color="black",
                                     corner_radius=100,
                                     font=("Poppins", FONT_SIZE_MEDIUM),
                                     hover_color="#d1dbe4",
-                                    command=self.show_signup_page)
-        self.sign_up.grid(row=0,
+                                    command=self.show_mainpage_page)
+        self.logout.grid(row=0,
                             column=3,
                             pady=(25, 5),
                             padx=(10, 0),
@@ -124,16 +128,10 @@ class MainPage(Window):
         self.master.current_window = self.master.INFORMATION_PAGE
         self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
         
-    def show_login_page(self):
+    def show_mainpage_page(self):
         self.master.windows[self.master.current_window].grid_remove()
         
-        self.master.current_window = self.master.LOGIN_PAGE
-        self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
-        
-    def show_signup_page(self):
-        self.master.windows[self.master.current_window].grid_remove()
-        
-        self.master.current_window = self.master.SIGNUP_PAGE
+        self.master.current_window = self.master.MAIN_PAGE
         self.master.windows[self.master.current_window].grid(row=0, column=0, sticky='nsew')
     
     def create_introduction(self):
