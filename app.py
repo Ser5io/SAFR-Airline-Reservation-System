@@ -16,6 +16,7 @@ from interface.invoice import Invoice
 
 customtkinter.set_appearance_mode("light")
 customtkinter.set_default_color_theme("dark-blue")
+customtkinter.deactivate_automatic_dpi_awareness()
 
 class App(customtkinter.CTk):
     def __init__(self):
