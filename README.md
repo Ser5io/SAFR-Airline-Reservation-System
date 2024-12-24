@@ -1,4 +1,4 @@
-# Airline Reservation System (SOSKI)
+# Airline Reservation System (SAFR)
 
 This project proposes the development of an Airline Reservation System (SOSKI), designed to simplify the process of booking, canceling, and managing airline reservations. The system has been built in Python using [CustomTkinter](https://customtkinter.tomschimansky.com/) for the GUI.
 
