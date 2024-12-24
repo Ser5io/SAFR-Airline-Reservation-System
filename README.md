@@ -18,7 +18,7 @@ Some of the features currently implemented are:
 
 ## Installation
 
-Download the latest version from the [releases](https://github.com/Ser5io/-SOSKI-Airline-Reservation-System-/releases) section.
+Download the latest version from the [releases](https://github.com/Ser5io/SAFR-Airline-Reservation-System.git) section.
 
 ## Run Locally
 
