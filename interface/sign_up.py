@@ -13,6 +13,7 @@ class Signup(Window):
     
     def draw_frame(self):
         self.configure_layout()
+
         
         self.create_back_ground()
         self.create_frame()
@@ -22,7 +23,7 @@ class Signup(Window):
         self.create_username_entry()
         self.create_password_entry()
         self.create_signup()
-        self.create_login()
+        # self.create_login()
     
     def create_back_ground(self):
         self.bg_image = ImageTk.PhotoImage(Image.open("images/pattern.png"))
@@ -101,13 +102,13 @@ class Signup(Window):
         
     def create_signup(self):
         signupimage = ImageTk.PhotoImage(Image.open("images/add-contact_11710543.png").resize((20, 20), Image.Resampling.LANCZOS))
-        signupbutton = customtkinter.CTkButton(self,
+        self.signupbutton = customtkinter.CTkButton(self,
                                         text="Sign up",
                                         image=signupimage,
                                         font=("Poppins", FONT_MIN_SIZE, "bold"),
                                         bg_color=BGCOLOR,
                                         command=self.show_mainpagelogin_page)
-        signupbutton.grid(row=6,
+        self.signupbutton.grid(row=6,
                         column=1,
                         sticky='ew',
                         padx=20,
@@ -149,7 +150,7 @@ class Signup(Window):
                     padx=20,
                     pady=(15,15))
         
-    def show_mainpagelogin_page(self):
+    def show_mainpagelogin_page(self, event=None):
         if self.firstname.get() == '' or self.lastname.get() == '' or self.username.get() == '' or self.password.get() == '':
             self.errormsg.configure(text='Please fill your informaions')
             return

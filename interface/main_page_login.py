@@ -92,14 +92,15 @@ class MainPageLogin(Window):
                             sticky="ew")
 
         self.my_ticket = customtkinter.CTkButton(self,
-                                    text="My Ticket",
+                                    text="COMING SOON",
                                     fg_color="white",
                                     border_color="#1b4552",
                                     border_width=2,
                                     text_color="#1b4552",
                                     corner_radius=100,
                                     font=("Poppins", FONT_SIZE_MEDIUM),
-                                    hover_color="#d1dbe4")
+                                    hover_color="#d1dbe4",
+                                    state='disabled')
         self.my_ticket.grid(row=0,
                               column=4,
                               pady=(25, 5),
@@ -107,14 +108,15 @@ class MainPageLogin(Window):
                               sticky="ew")
 
         self.manager_system = customtkinter.CTkButton(self,
-                                    text="Manager System",
+                                    text="COMING SOON",
                                     fg_color="white",
                                     border_color="#1b4552",
                                     border_width=2,
                                     text_color="#1b4552",
                                     corner_radius=100,
                                     font=("Poppins", FONT_SIZE_MEDIUM),
-                                    hover_color="#d1dbe4")
+                                    hover_color="#d1dbe4",
+                                    state='disabled')
         self.manager_system.grid(row=0,
                               column=5,
                               pady=(25, 5),
